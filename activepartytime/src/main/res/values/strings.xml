@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ActivePartyTime</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- BUTTONS -->
+    <string name="ButtonQuit">Quit</string>
+    <string name="ButtonPlay">Play</string>
+    <string name="ButtonSettings">Settings</string>
+
+    <!-- DIALOGS -->
+    <string name="dialogStartPagePlay">Choose game type:</string>
+
+
+
+</resources>

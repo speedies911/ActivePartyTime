@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ActivePartyTime.iml" filepath="$PROJECT_DIR$/ActivePartyTime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/activepartytime/activepartytime.iml" filepath="$PROJECT_DIR$/activepartytime/activepartytime.iml" />
+    </modules>
+  </component>
+</project>
+

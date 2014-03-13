@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/start_page"
+    >
+
+    <Button
+        android:id="@+id/buttonStartPagePlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/startPageButton"
+        android:text="@string/ButtonPlay"
+        android:layout_marginTop="310dp"
+        android:onClick="play"
+        />
+
+    <Button
+        android:id="@+id/buttonStartPageSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/startPageButton"
+        android:text="@string/ButtonSettings"
+        android:layout_marginTop="370dp"
+        />
+
+    <Button
+        android:id="@+id/buttonStartPageQuit"
+        style="@style/startPageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ButtonQuit"
+        android:layout_marginTop="430dp"
+        android:onClick="quit"/>
+
+</RelativeLayout>
