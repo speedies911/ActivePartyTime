@@ -24,6 +24,7 @@
         style="@style/startPageButton"
         android:text="@string/ButtonSettings"
         android:layout_marginTop="370dp"
+        android:onClick="test"
         />
 
     <Button

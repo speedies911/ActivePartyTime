@@ -10,13 +10,20 @@
         <activity
             android:name="com.app.activepartytime.StartPageActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
-
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.app.activepartytime.activities.SingleDeviceTeams"
+            android:label="@string/title_activity_single_device_teams"
+            android:parentActivityName="com.app.activepartytime.StartPageActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.activepartytime.StartPageActivity" />
         </activity>
     </application>
 

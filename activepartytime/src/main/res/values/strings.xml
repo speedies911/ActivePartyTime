@@ -12,7 +12,7 @@
 
     <!-- DIALOGS -->
     <string name="dialogStartPagePlay">Choose game type:</string>
-
-
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_single_device_teams">SingleDeviceTeams</string>
 
 </resources>
