@@ -1,12 +1,12 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.app.activepartytime.activities.SingleDeviceTeams"
     tools:ignore="MergeRootFrame"
     android:background="#008920">
-
 
     <LinearLayout
         android:orientation="horizontal"
@@ -34,4 +34,112 @@
             android:onClick="plus"
             />
     </LinearLayout>
-</FrameLayout>
+
+    <!-- TEAM 1 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam1"
+        />
+        <EditText
+            android:id="@+id/NameTeam1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team 1"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <!-- TEAM 2 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam2"
+            />
+        <EditText
+            android:id="@+id/NameTeam2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team 2"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@android:color/holo_orange_light"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+
+    <!-- TEAM 3 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam3"
+            />
+        <EditText
+            android:id="@+id/NameTeam3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team 3"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@android:color/holo_red_dark"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+
+    <!-- TEAM 4 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam4"
+            />
+        <EditText
+            android:id="@+id/NameTeam4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team 4"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@android:color/holo_green_dark"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

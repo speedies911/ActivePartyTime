@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -37,6 +38,9 @@ public class SingleDeviceTeams extends Activity {
         plus = (Button) findViewById(R.id.buttonPlus);
         numberOfTeams = (TextView) findViewById(R.id.numberOfTeams);
         numberOfTeams.setText(String.valueOf(MIN_TEAMS));
+
+        findViewById(R.id.LayoutTeam3).setVisibility(LinearLayout.GONE);
+        findViewById(R.id.LayoutTeam4).setVisibility(LinearLayout.GONE);
         /*if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -47,6 +51,7 @@ public class SingleDeviceTeams extends Activity {
 
     public void minus (View view) {
         if (teams != MIN_TEAMS) {
+            setVisibleTeamsOff(teams);
             teams--;
             numberOfTeams.setText(String.valueOf(teams));
         }
@@ -55,7 +60,24 @@ public class SingleDeviceTeams extends Activity {
     public void plus (View view) {
         if (teams != MAX_TEAMS) {
             teams++;
+            setVisibleTeamsOn(teams);
             numberOfTeams.setText(String.valueOf(teams));
+        }
+    }
+
+    private void setVisibleTeamsOff(int id) {
+        if (id == 3) {
+            findViewById(R.id.LayoutTeam3).setVisibility(LinearLayout.GONE);
+        } else {
+            findViewById(R.id.LayoutTeam4).setVisibility(LinearLayout.GONE);
+        }
+    }
+
+    private void setVisibleTeamsOn(int id) {
+        if (id == 3) {
+            findViewById(R.id.LayoutTeam3).setVisibility(LinearLayout.VISIBLE);
+        } else {
+            findViewById(R.id.LayoutTeam4).setVisibility(LinearLayout.VISIBLE);
         }
     }
 

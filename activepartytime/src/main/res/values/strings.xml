@@ -15,4 +15,10 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_single_device_teams">SingleDeviceTeams</string>
 
+    <!-- LABELS -->
+    <string name="LabelTeam1">Team 1</string>
+    <string name="LabelTeam2">Team 2</string>
+    <string name="LabelTeam3">Team 3</string>
+    <string name="LabelTeam4">Team 4</string>
+
 </resources>
