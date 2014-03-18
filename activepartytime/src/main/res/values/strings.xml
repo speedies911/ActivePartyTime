@@ -10,6 +10,8 @@
     <string name="ButtonPlay">Play</string>
     <string name="ButtonSettings">Settings</string>
 
+    <string name="ButtonTeamsConfirm">Confirm</string>
+
     <!-- DIALOGS -->
     <string name="dialogStartPagePlay">Choose game type:</string>
     <string name="title_activity_test">TestActivity</string>
