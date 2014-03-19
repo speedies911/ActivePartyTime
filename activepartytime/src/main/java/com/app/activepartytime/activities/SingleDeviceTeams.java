@@ -2,7 +2,10 @@ package com.app.activepartytime.activities;
 
 import android.app.Activity;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,11 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+
+import org.apache.http.util.VersionInfo;
 
 public class SingleDeviceTeams extends Activity {
 
@@ -25,6 +31,11 @@ public class SingleDeviceTeams extends Activity {
     private Button minus;
     private Button plus;
     private TextView numberOfTeams;
+    private EditText[] teamNames;
+
+    private LinearLayout ll3;
+    private LinearLayout ll4;
+
     private int teams;
 
     @Override
@@ -39,8 +50,17 @@ public class SingleDeviceTeams extends Activity {
         numberOfTeams = (TextView) findViewById(R.id.numberOfTeams);
         numberOfTeams.setText(String.valueOf(MIN_TEAMS));
 
-        findViewById(R.id.LayoutTeam3).setVisibility(LinearLayout.GONE);
-        findViewById(R.id.LayoutTeam4).setVisibility(LinearLayout.GONE);
+        ll3 = (LinearLayout)findViewById(R.id.LayoutTeam3);
+        ll3.setVisibility(LinearLayout.GONE);
+
+        ll4 = (LinearLayout)findViewById(R.id.LayoutTeam4);
+        ll4.setVisibility(LinearLayout.GONE);
+
+        teamNames = new EditText[4];
+        teamNames[0] = (EditText)findViewById(R.id.NameTeam1);
+        teamNames[1] = (EditText)findViewById(R.id.NameTeam2);
+        teamNames[2] = (EditText)findViewById(R.id.NameTeam3);
+        teamNames[3] = (EditText)findViewById(R.id.NameTeam4);
         /*if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -67,18 +87,65 @@ public class SingleDeviceTeams extends Activity {
 
     private void setVisibleTeamsOff(int id) {
         if (id == 3) {
-            findViewById(R.id.LayoutTeam3).setVisibility(LinearLayout.GONE);
+            ll3.setVisibility(LinearLayout.GONE);
         } else {
-            findViewById(R.id.LayoutTeam4).setVisibility(LinearLayout.GONE);
+            ll4.setVisibility(LinearLayout.GONE);
         }
     }
 
     private void setVisibleTeamsOn(int id) {
         if (id == 3) {
-            findViewById(R.id.LayoutTeam3).setVisibility(LinearLayout.VISIBLE);
+            ll3.setVisibility(LinearLayout.VISIBLE);
         } else {
-            findViewById(R.id.LayoutTeam4).setVisibility(LinearLayout.VISIBLE);
+            ll4.setVisibility(LinearLayout.VISIBLE);
         }
+    }
+
+    /**
+     * TODO alert dialog on missing team name
+     * @param view
+     */
+    public void confirm (View view) {
+        boolean all = true;
+        boolean different = true;
+        String missing = "";
+        String same = "";
+        for (int i = 0; i < teams; i++) {
+            if (teamNames[i].getText().length() == 0) {
+                all = false;
+                missing += "Team " + (i+1) + "\n";
+            } else {
+                for (int j = i+1; j < teams; j++) {
+                    if (teamNames[i].getText().toString()
+                            .equals(teamNames[j].getText().toString())) {
+                        different = false;
+                        same += "Team " + (i+1) + " and Team " + (j+1)+"\n";
+                    }
+                }
+            }
+        }
+        System.out.println(all + " " + different);
+        if (all && different) {
+            // TODO new activity
+        } else {
+            showTeamNameMissingDialog(missing, same, all, different);
+        }
+    }
+
+    private void showTeamNameMissingDialog (String missing, String same, boolean all, boolean different) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.dialogSingleDeviceActivityError);
+
+        if (!all && !different) {
+            builder.setMessage("Missing names at:\n" + missing + "\nEquals teams:\n" + same);
+        } else if (!all) {
+            builder.setMessage("Missing names at:\n" + missing);
+        } else {
+            builder.setMessage("Equals teams:\n" + same);
+        }
+
+        builder.setPositiveButton("Back", null);
+        builder.show();
     }
 
 

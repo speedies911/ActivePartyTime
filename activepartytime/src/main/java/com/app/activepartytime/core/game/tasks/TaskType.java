@@ -4,8 +4,6 @@ import com.app.activepartytime.R;
 
 /**
  * Created by Dave on 13.3.14.
- *
- * TODO images
  */
 public enum TaskType {
 

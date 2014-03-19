@@ -136,6 +136,7 @@
         android:text="@string/ButtonTeamsConfirm"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30px"
+        android:onClick="confirm"
         />
 
 </LinearLayout>
