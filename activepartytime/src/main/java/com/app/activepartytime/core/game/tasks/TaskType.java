@@ -9,10 +9,10 @@ import com.app.activepartytime.R;
  */
 public enum TaskType {
 
-    DRAWING(R.drawable.drawing),
-    TALKING(R.drawable.talking),
-    PANTOMIME(R.drawable.pantomime),
-    MAZE(R.drawable.maze);
+    //DRAWING(R.drawable.drawing),
+    //TALKING(R.drawable.talking),
+    //PANTOMIME(R.drawable.pantomime),
+    //MAZE(R.drawable.maze);
 
     private final String imageLocation;
     private final String name;
