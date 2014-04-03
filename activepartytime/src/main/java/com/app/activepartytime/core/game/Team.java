@@ -14,7 +14,7 @@ public class Team {
     private String name;
     private Color color;
     private ArrayList<Player> players;
-    private short playgroundPosition;
+    private int playgroundPosition;
 
     private Socket socket;
 
@@ -38,10 +38,21 @@ public class Team {
         }
     }
 
+    public void moveTeam(int points) {
+        this.playgroundPosition += points;
+    }
+
     public short getId() {
         return id;
     }
 
+    public int getPlaygroundPosition() {
+        return playgroundPosition;
+    }
+
+    public void setPlaygroundPosition(int playgroundPosition) {
+        this.playgroundPosition = playgroundPosition;
+    }
 
     public String getName() {
         return name;
