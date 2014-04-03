@@ -2,6 +2,7 @@ package com.app.activepartytime.core.game;
 
 import android.graphics.Color;
 
+import java.net.Socket;
 import java.util.ArrayList;
 
 /**
@@ -9,12 +10,22 @@ import java.util.ArrayList;
  */
 public class Team {
 
+    private short id;
     private String name;
     private Color color;
     private ArrayList<Player> players;
     private short playgroundPosition;
 
-    public Team(String name, Color color) {
+    private Socket socket;
+
+    public Team(short id) {
+        this.id = id;
+        this.players = new ArrayList<Player>();
+        this.playgroundPosition = 0;
+    }
+
+    public Team(short id, String name, Color color) {
+        this.id = id;
         this.name = name;
         this.color = color;
         this.players = new ArrayList<Player>();
@@ -26,6 +37,11 @@ public class Team {
             players.add(player);
         }
     }
+
+    public short getId() {
+        return id;
+    }
+
 
     public String getName() {
         return name;
@@ -41,5 +57,13 @@ public class Team {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
+
+    public Socket getSocket() {
+        return socket;
     }
 }

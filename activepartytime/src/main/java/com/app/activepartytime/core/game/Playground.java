@@ -8,7 +8,11 @@ public class Playground {
     private static final int PLAYGROUND_LENGTH = 40;
     private Task[] tasks;
 
-    public Playground(Task[] tasks) {
+    public Playground() {
         this.tasks = new Task[PLAYGROUND_LENGTH];
+    }
+
+    private void generateTasks() {
+        
     }
 }

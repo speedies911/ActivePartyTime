@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.app.activepartytime" >
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -24,6 +30,30 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app.activepartytime.StartPageActivity" />
+        </activity>
+        <activity
+            android:name="com.app.activepartytime.activities.WiFiTeams"
+            android:label="@string/title_activity_wi_fi_teams"
+            android:parentActivityName="com.app.activepartytime.StartPageActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.activepartytime.StartPageActivity" />
+        </activity>
+        <activity
+            android:name="com.app.activepartytime.activities.tabs.HostWiFiActivity"
+            android:label="@string/title_activity_host_wi_fi"
+            android:parentActivityName="com.app.activepartytime.activities.WiFiTeams" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.activepartytime.activities.WiFiTeams" />
+        </activity>
+        <activity
+            android:name="com.app.activepartytime.activities.tabs.JoinWiFiActivity"
+            android:label="@string/title_activity_join_wi_fi"
+            android:parentActivityName="com.app.activepartytime.activities.WiFiTeams" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.app.activepartytime.activities.WiFiTeams" />
         </activity>
     </application>
 

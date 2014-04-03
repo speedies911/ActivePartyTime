@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.app.activepartytime.activities.SingleDeviceTeams;
+import com.app.activepartytime.activities.WiFiTeams;
 
 public class StartPageActivity extends Activity {
 
@@ -62,6 +63,11 @@ public class StartPageActivity extends Activity {
         startActivity(intent);
     }
 
+    public void wifi() {
+        Intent intent = new Intent(this, WiFiTeams.class);
+        startActivity(intent);
+    }
+
     private void playDialog() {
         final String[] items = {"On one device","Bluetooth","WiFi"};
 
@@ -74,6 +80,8 @@ public class StartPageActivity extends Activity {
                     //Toast.makeText(StartPageActivity.this,items[i],Toast.LENGTH_SHORT).show();
                     switch (i) {
                         case 0: oneDevice();
+                            break;
+                        case 2: wifi();
                             break;
                     }
                 }
