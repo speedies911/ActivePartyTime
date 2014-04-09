@@ -54,10 +54,11 @@ public class Server {
         new Connector(numberOfTeams, this).start();
     }
 
+    // TODO
     public List<Socket> getSockets() {
         List<Socket> out = new ArrayList<Socket>();
         for (Team team : teams) {
-            out.add(team.getSocket());
+            //out.add(team.getSocket());
         }
         return out;
     }

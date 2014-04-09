@@ -8,9 +8,9 @@ import java.util.List;
 public class Game {
 
     private Playground playground;
-    private List<Team> teams;
+    private Team[] teams;
 
-    public Game(int playgroundLength, List<Team> teams) {
+    public Game(int playgroundLength, Team[] teams) {
         this.playground = new Playground(playgroundLength);
         this.playground.generateTasks();
 
@@ -28,9 +28,9 @@ public class Game {
         // PERFORMING TASK
         // WAITING FOR RESPONSE
 
-        if (DONE) {
+        /*if (DONE) {
             team.moveTeam(task.getPoints());
-        }
+        }*/
 
     }
 

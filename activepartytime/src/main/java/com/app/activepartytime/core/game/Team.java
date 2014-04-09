@@ -1,22 +1,24 @@
 package com.app.activepartytime.core.game;
 
 import android.graphics.Color;
+import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.net.Socket;
 import java.util.ArrayList;
 
 /**
  * Created by Dave on 13.3.14.
  */
-public class Team {
+public class Team implements Serializable {
 
     private short id;
     private String name;
-    private Color color;
+    private int color;
     private ArrayList<Player> players;
     private int playgroundPosition;
 
-    private Socket socket;
+    //private Socket socket;
 
     public Team(short id) {
         this.id = id;
@@ -24,7 +26,7 @@ public class Team {
         this.playgroundPosition = 0;
     }
 
-    public Team(short id, String name, Color color) {
+    public Team(short id, String name, int color) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -62,19 +64,28 @@ public class Team {
         this.name = name;
     }
 
-    public Color getColor() {
+    public int getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(int color) {
         this.color = color;
     }
 
-    public void setSocket(Socket socket) {
+    /*public void setSocket(Socket socket) {
         this.socket = socket;
     }
 
     public Socket getSocket() {
         return socket;
+    }*/
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", color=" + color +
+                '}';
     }
 }
