@@ -3,15 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/content"
-    tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment">
+    tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment"
+    android:fillViewport="false">
 
     <RelativeLayout
         android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.app.activepartytime.activities.GameActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context="com.app.activepartytime.activities.GameMoveActivity"
         android:background="#00741d"
-        tools:ignore="MergeRootFrame">
+        tools:ignore="MergeRootFrame"
+        android:minHeight="500dp">
 
 
         <TextView
@@ -27,43 +29,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Generate"
-            android:id="@+id/generate"
+            android:id="@+id/generateButton"
             android:layout_below="@+id/activeTeam"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="31dp"
             android:textColor="@color/White"
-            android:onClick="generate"/>
+            android:onClick="generateFunction"
+            android:width="150dp"
+            android:height="150dp" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/taskInformation"
-            android:layout_below="@+id/activeTeam"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/taskText"
-                android:background="#655fe9"
-                android:height="100dp"
-                android:layout_marginTop="15dp"
-                />
-
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Display"
-                android:id="@+id/switchDisplay"
-                android:layout_marginTop="36dp"
-                android:checked="false"
-                android:onClick="display"
-                />
-
-        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card"
+            android:height="220dp"
+            android:width="250dp"
+            android:layout_below="@+id/generateButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="51dp"
+            android:visibility="invisible"
+            android:background="@color/Blue"
+            android:enabled="false"
+            android:onClick="flipCard" />
 
     </RelativeLayout>
 

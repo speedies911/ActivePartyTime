@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
@@ -69,14 +71,17 @@ public class GameActivity extends Activity {
 
     public void generate (View view) {
         Button generate = (Button)findViewById(R.id.generate);
+        FrameLayout card = (FrameLayout) findViewById(R.id.Card1);
         generate.setEnabled(false);
         generate.setVisibility(RelativeLayout.GONE);
+        card.setEnabled(true);
+        card.setVisibility(RelativeLayout.VISIBLE);
         /*TextView taskText = (TextView)findViewById(R.id.taskText);
         taskText.setVisibility(RelativeLayout.VISIBLE);
         Switch switchDisplay = (Switch)findViewById(R.id.switchDisplay);
         switchDisplay.setVisibility(RelativeLayout.VISIBLE);*/
-        LinearLayout taskInformation = (LinearLayout)findViewById(R.id.taskInformation);
-        taskInformation.setVisibility(RelativeLayout.VISIBLE);
+        //LinearLayout taskInformation = (LinearLayout)findViewById(R.id.taskInformation);
+        //taskInformation.setVisibility(RelativeLayout.VISIBLE);
     }
 
     @Override

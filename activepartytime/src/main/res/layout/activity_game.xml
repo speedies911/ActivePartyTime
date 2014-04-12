@@ -20,13 +20,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Generate"
+        android:text="Generate2"
         android:id="@+id/generate"
-        android:layout_below="@+id/activeTeam"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="57dp"
         android:textColor="@color/White"
-        android:onClick="generate"/>
+        android:onClick="generate"
+        android:background="@color/DarkBlue"
+        android:clickable="false"
+        android:enabled="false"
+        android:height="150dp"
+        android:width="150dp"
+        android:layout_below="@+id/chronometer"
+        android:layout_centerHorizontal="true" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -63,5 +68,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/chronometer" />
+
+    <TextSwitcher
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Card1"
+        android:layout_marginTop="46dp"
+        android:minHeight="150dp"
+        android:minWidth="200dp"
+        android:layout_below="@+id/generate"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:foreground="@color/Azure"
+        android:background="@color/Chocolate"
+        android:animateFirstView="true" />
 
 </RelativeLayout>
