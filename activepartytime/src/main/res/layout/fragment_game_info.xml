@@ -31,8 +31,7 @@
             android:layout_below="@+id/activeTeam"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="31dp"
-            android:textColor="@color/White"
-            android:onClick="generate"/>
+            android:textColor="@color/White"/>
 
         <LinearLayout
             android:orientation="vertical"
