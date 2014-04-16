@@ -33,6 +33,7 @@
             android:layout_below="@+id/activeTeam"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="31dp"
+
             android:textColor="@color/White"
             android:onClick="generateFunction"
             android:width="150dp"
