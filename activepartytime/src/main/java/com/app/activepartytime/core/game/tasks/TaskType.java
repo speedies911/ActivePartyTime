@@ -1,5 +1,7 @@
 package com.app.activepartytime.core.game.tasks;
 
+import android.graphics.drawable.Drawable;
+
 import com.app.activepartytime.R;
 
 /**
@@ -26,5 +28,15 @@ public enum TaskType {
 
     public String getName() {
         return name;
+    }
+
+    /**
+     * TODO improve if it is necessary
+     * @return random tasktype
+     */
+    public static TaskType getRandomType() {
+        int rand = (int)Math.random()*4;
+        TaskType[] types = {DRAWING,SPEAKING,PANTOMIME,MAZE};
+        return types[rand];
     }
 }

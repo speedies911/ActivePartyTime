@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,8 +21,12 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.core.game.Team;
 
 import org.apache.http.util.VersionInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SingleDeviceTeams extends Activity {
 
@@ -126,7 +131,16 @@ public class SingleDeviceTeams extends Activity {
         }
         System.out.println(all + " " + different);
         if (all && different) {
-            // TODO new activity
+            Team[] teamList = new Team[teams];
+
+            for (short i = 0; i < teams; i++) {
+                teamList[i] = new Team(i,teamNames[i].getText().toString(),Color.RED);
+            }
+            Intent intent = new Intent(this, GameMoveActivity.class);
+
+            // TODO - send (save) team list to Game Activity
+            intent.putExtra("teamList",teamList);
+            startActivity(intent);
         } else {
             showTeamNameMissingDialog(missing, same, all, different);
         }

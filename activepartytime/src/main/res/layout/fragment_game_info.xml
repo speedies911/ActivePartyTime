@@ -1,0 +1,58 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content"
+    tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment"
+    android:fillViewport="false">
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context="com.app.activepartytime.activities.GameMoveActivity"
+        android:background="#00741d"
+        tools:ignore="MergeRootFrame"
+        android:minHeight="500dp">
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activeTeam"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#dfdfdf"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generate"
+            android:id="@+id/generateButton"
+            android:layout_below="@+id/activeTeam"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="31dp"
+
+            android:textColor="@color/White"
+            android:onClick="generateFunction"
+            android:width="150dp"
+            android:height="150dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card"
+            android:height="220dp"
+            android:width="250dp"
+            android:layout_below="@+id/generateButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="51dp"
+            android:visibility="invisible"
+            android:background="@color/Blue"
+            android:enabled="false"
+            android:onClick="flipCard" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -25,5 +25,11 @@
     <string name="title_activity_wi_fi_teams">WiFiTeams</string>
     <string name="title_activity_host_wi_fi">HostWiFiActivity</string>
     <string name="title_activity_join_wi_fi">JoinWiFiActivity</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_game_move">GameMoveActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
