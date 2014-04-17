@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.app.activepartytime.activities.SingleDeviceTeams"
+    tools:ignore="MergeRootFrame"
+    android:background="#00741d">
+
+    <!-- NumberPicker -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/buttonMinus"
+            android:onClick="minus"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberOfTeams"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/buttonPlus"
+            android:onClick="plus"
+            />
+    </LinearLayout>
+
+    <!-- TEAM 1 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam1"
+        />
+        <EditText
+            android:id="@+id/NameTeam1"
+            android:text="Team 1"
+            style="@style/styleTeamsName"
+            />
+
+        <ImageView
+            android:src="@color/Blue"
+            style="@style/styleTeamsColor"
+            />
+    </LinearLayout>
+
+    <!-- TEAM 2 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam2"
+            />
+        <EditText
+            android:id="@+id/NameTeam2"
+            android:text="Team 2"
+            style="@style/styleTeamsName"
+            />
+
+        <ImageView
+            android:src="@color/Yellow"
+            style="@style/styleTeamsColor"
+            />
+
+    </LinearLayout>
+
+    <!-- TEAM 3 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam3"
+            />
+        <EditText
+            android:id="@+id/NameTeam3"
+            android:text="Team 3"
+            style="@style/styleTeamsName"
+            />
+
+        <ImageView
+            android:src="@color/Red"
+            style="@style/styleTeamsColor"
+            />
+
+    </LinearLayout>
+
+    <!-- TEAM 4 -->
+    <LinearLayout
+        android:id="@+id/LayoutTeam4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LabelTeam4"
+            />
+        <EditText
+            android:id="@+id/NameTeam4"
+            android:text="Team 4"
+            style="@style/styleTeamsName"
+            />
+
+        <ImageView
+            android:src="@color/DarkGreen"
+            style="@style/styleTeamsColor"
+        />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30px"
+        android:onClick="confirm"
+        />
+
+</LinearLayout>

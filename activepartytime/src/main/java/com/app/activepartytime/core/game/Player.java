@@ -1,11 +1,12 @@
 package com.app.activepartytime.core.game;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Created by Dave on 13.3.14.
  */
-public class Player {
+public class Player implements Serializable {
 
     private String name;
     private File avatar;

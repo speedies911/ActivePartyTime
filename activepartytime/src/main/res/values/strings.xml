@@ -9,10 +9,27 @@
     <string name="ButtonQuit">Quit</string>
     <string name="ButtonPlay">Play</string>
     <string name="ButtonSettings">Settings</string>
+    <string name="ButtonTeamsConfirm">Confirm</string>
 
     <!-- DIALOGS -->
     <string name="dialogStartPagePlay">Choose game type:</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_single_device_teams">SingleDeviceTeams</string>
+    <string name="dialogSingleDeviceActivityError">Error</string>
 
-
+    <!-- LABELS -->
+    <string name="LabelTeam1">Team 1</string>
+    <string name="LabelTeam2">Team 2</string>
+    <string name="LabelTeam3">Team 3</string>
+    <string name="LabelTeam4">Team 4</string>
+    <string name="title_activity_wi_fi_teams">WiFiTeams</string>
+    <string name="title_activity_host_wi_fi">HostWiFiActivity</string>
+    <string name="title_activity_join_wi_fi">JoinWiFiActivity</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_game_move">GameMoveActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

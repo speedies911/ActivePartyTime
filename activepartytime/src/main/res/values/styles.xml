@@ -12,4 +12,20 @@
         <item name="android:textSize">26dp</item>
     </style>
 
+    <style name="styleTeamsColor">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:background">@color/White</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_marginRight">10px</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="styleTeamsName">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:maxLength">25</item>
+    </style>
+
 </resources>

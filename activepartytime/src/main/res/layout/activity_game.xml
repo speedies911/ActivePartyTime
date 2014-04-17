@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.activepartytime.activities.GameActivity"
+    android:background="#00741d"
+    tools:ignore="MergeRootFrame">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activeTeam"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#dfdfdf"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Generate2"
+        android:id="@+id/generate"
+        android:layout_marginTop="57dp"
+        android:textColor="@color/White"
+        android:onClick="generate"
+        android:background="@color/DarkBlue"
+        android:clickable="false"
+        android:enabled="false"
+        android:height="150dp"
+        android:width="150dp"
+        android:layout_below="@+id/chronometer"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/taskInformation"
+        android:layout_below="@+id/activeTeam"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskText"
+            android:background="#655fe9"
+            android:height="100dp"
+            android:layout_marginTop="15dp"
+        />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Display"
+            android:id="@+id/switchDisplay"
+            android:layout_marginTop="36dp"
+            android:checked="false"
+            android:onClick="display"
+            />
+
+    </LinearLayout>
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer" />
+
+    <TextSwitcher
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Card1"
+        android:layout_marginTop="46dp"
+        android:minHeight="150dp"
+        android:minWidth="200dp"
+        android:layout_below="@+id/generate"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:foreground="@color/Azure"
+        android:background="@color/Chocolate"
+        android:animateFirstView="true" />
+
+</RelativeLayout>
