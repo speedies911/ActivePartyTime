@@ -1,4 +1,4 @@
-package com.app.activepartytime;
+package com.app.activepartytime.activities;
 
 import android.app.Activity;
 import android.app.ActionBar;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.app.activepartytime.R;
 import com.app.activepartytime.activities.SingleDeviceTeams;
 import com.app.activepartytime.activities.WiFiTeams;
 

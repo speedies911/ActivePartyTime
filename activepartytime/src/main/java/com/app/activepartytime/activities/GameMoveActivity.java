@@ -1,13 +1,11 @@
 package com.app.activepartytime.activities;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -17,19 +15,13 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
-import com.app.activepartytime.StartPageActivity;
 import com.app.activepartytime.activities.fragments.GameInfoFragment;
 import com.app.activepartytime.activities.fragments.GamePlaygroundFragment;
-
-import java.util.List;
 
 /**
  * Created by Dave on 8.4.14.
