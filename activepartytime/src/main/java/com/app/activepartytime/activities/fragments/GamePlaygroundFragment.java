@@ -2,7 +2,6 @@ package com.app.activepartytime.activities.fragments;
 
 
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -10,10 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Chronometer;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
@@ -48,42 +46,81 @@ public class GamePlaygroundFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_game_playground, container, false);
 
-        LinearLayout layoutPlayground = (LinearLayout) v.findViewById(R.id.containerPlayground);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(140, 200);
-        layoutParams.setMargins(24, 0, 24, 0);
-        for (int i = 1; i < 10; i++) {
+        RelativeLayout layoutPlayground = (RelativeLayout) v.findViewById(R.id.containerPlayground);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(140, 200);
+
+        int imagesID = 1;
+        for (int i = 1; i <= 10; i++) {
             ImageView image = new ImageView(getActivity());
-           // image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            // image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             image.setImageResource(R.drawable.drawing);
-            image.setId(i);
+            image.setId(imagesID);
             image.setMaxHeight(50);
             image.setMaxHeight(50);
+            layoutParams = new RelativeLayout.LayoutParams(140, 200);
+            layoutParams.setMargins(24,0,24,0);
+            if(imagesID != 1){
+                layoutParams.addRule(RelativeLayout.RIGHT_OF, imagesID -1);
+            }
+
+            imagesID++;
             image.setLayoutParams(layoutParams);
+
             layoutPlayground.addView(image);
 
         }
-        for (int i = 1; i < 10; i++) {
+
+        for (int i = 1; i <= 10; i++) {
             ImageView image = new ImageView(getActivity());
-          image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+          //image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             image.setImageResource(R.drawable.speaking);
-            image.setId(i);
+            image.setId(imagesID);
             image.setMaxHeight(50);
             image.setMaxHeight(50);
+            layoutParams = new RelativeLayout.LayoutParams(140, 200);
+            layoutParams.setMargins(24,0,24,0);
+            layoutParams.addRule(RelativeLayout.RIGHT_OF, imagesID -1);
+            imagesID++;
             image.setLayoutParams(layoutParams);
             layoutPlayground.addView(image);
 
         }
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             ImageView image = new ImageView(getActivity());
-            image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            //image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             image.setImageResource(R.drawable.pantomime);
-            image.setId(i);
+            image.setId(imagesID);
             image.setMaxHeight(50);
             image.setMaxHeight(50);
+            layoutParams = new RelativeLayout.LayoutParams(140, 200);
+            layoutParams.setMargins(24,0,24,0);
+            layoutParams.addRule(RelativeLayout.RIGHT_OF, imagesID -1);
+            imagesID++;
             image.setLayoutParams(layoutParams);
             layoutPlayground.addView(image);
 
         }
+
+        /*
+        figure test
+         */
+
+            ImageView image = new ImageView(getActivity());
+            // image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            image.setImageResource(R.drawable.figure_red);
+            image.setId(imagesID);
+            image.setMaxHeight(50);
+            image.setMaxHeight(50);
+            layoutParams = new RelativeLayout.LayoutParams(140, 200);
+            layoutParams.setMargins(24,0,24,0);
+            if(imagesID != 1){
+                layoutParams.addRule(RelativeLayout.RIGHT_OF, 2);
+            }
+
+            image.setLayoutParams(layoutParams);
+
+            layoutPlayground.addView(image);
+
 
 
         LinearLayout layoutTeamList = (LinearLayout) v.findViewById(R.id.containerInfoList);
