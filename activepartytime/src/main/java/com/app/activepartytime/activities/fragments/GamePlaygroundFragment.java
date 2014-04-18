@@ -34,25 +34,7 @@ public class GamePlaygroundFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public void startStop() {
-        if (timerIsRunning) {
-            timer.cancel();
-            timerIsRunning = false;
-        } else {
-            timer = new CountDownTimer(MAX_TIME_IN_MS, COUNTDOWN_INTERVAL_IN_MS) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    timerDisplay.setText(millisUntilFinished / 1000 + "s");
-                }
 
-                @Override
-                public void onFinish() {
-                    timerDisplay.setText("TIME OUT !!!");
-                }
-            }.start();
-            timerIsRunning = true;
-        }
-    }
 
 
     @Override
@@ -66,13 +48,7 @@ public class GamePlaygroundFragment extends Fragment {
         timerDisplay.setText(MAX_TIME_IN_MS / 1000 + "s");
 
         timerIsRunning = false;
-        startStopButton = (Button) v.findViewById(R.id.startstop);
-        startStopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startStop();
-            }
-        });
+
 
         return v;
     }

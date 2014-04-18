@@ -14,7 +14,6 @@ public enum TaskType {
     PANTOMIME("Pantomime", R.drawable.pantomime),
     MAZE("Maze", R.drawable.maze);
 
-
     private final int imageLocation;
     private final String name;
 
