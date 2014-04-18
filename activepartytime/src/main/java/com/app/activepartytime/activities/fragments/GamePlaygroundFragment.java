@@ -2,6 +2,7 @@ package com.app.activepartytime.activities.fragments;
 
 
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
@@ -34,25 +38,7 @@ public class GamePlaygroundFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public void startStop() {
-        if (timerIsRunning) {
-            timer.cancel();
-            timerIsRunning = false;
-        } else {
-            timer = new CountDownTimer(MAX_TIME_IN_MS, COUNTDOWN_INTERVAL_IN_MS) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    timerDisplay.setText(millisUntilFinished / 1000 + "s");
-                }
 
-                @Override
-                public void onFinish() {
-                    timerDisplay.setText("TIME OUT !!!");
-                }
-            }.start();
-            timerIsRunning = true;
-        }
-    }
 
 
     @Override
@@ -62,17 +48,61 @@ public class GamePlaygroundFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_game_playground, container, false);
 
-        timerDisplay = (TextView)v.findViewById(R.id.timerDisplay);
-        timerDisplay.setText(MAX_TIME_IN_MS / 1000 + "s");
+        LinearLayout layoutPlayground = (LinearLayout) v.findViewById(R.id.containerPlayground);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(140, 200);
+        layoutParams.setMargins(24, 0, 24, 0);
+        for (int i = 1; i < 10; i++) {
+            ImageView image = new ImageView(getActivity());
+           // image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            image.setImageResource(R.drawable.drawing);
+            image.setId(i);
+            image.setMaxHeight(50);
+            image.setMaxHeight(50);
+            image.setLayoutParams(layoutParams);
+            layoutPlayground.addView(image);
 
-        timerIsRunning = false;
-        startStopButton = (Button) v.findViewById(R.id.startstop);
-        startStopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startStop();
+        }
+        for (int i = 1; i < 10; i++) {
+            ImageView image = new ImageView(getActivity());
+          image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            image.setImageResource(R.drawable.speaking);
+            image.setId(i);
+            image.setMaxHeight(50);
+            image.setMaxHeight(50);
+            image.setLayoutParams(layoutParams);
+            layoutPlayground.addView(image);
+
+        }
+        for (int i = 1; i < 10; i++) {
+            ImageView image = new ImageView(getActivity());
+            image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            image.setImageResource(R.drawable.pantomime);
+            image.setId(i);
+            image.setMaxHeight(50);
+            image.setMaxHeight(50);
+            image.setLayoutParams(layoutParams);
+            layoutPlayground.addView(image);
+
+        }
+
+
+        LinearLayout layoutTeamList = (LinearLayout) v.findViewById(R.id.containerInfoList);
+        for (int i = 0; i < 6; i++) {
+            LinearLayout row = new LinearLayout(getActivity());
+            row.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            for (int j = 0; j < 3; j++) {
+                Button btnTag = new Button(getActivity());
+                btnTag.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                btnTag.setText("Button " + (j + 1 + (i * 4 )));
+                btnTag.setId(j + 1 + (i * 4));
+                row.addView(btnTag);
             }
-        });
+
+            layoutTeamList.addView(row);
+        }
+
+
 
         return v;
     }

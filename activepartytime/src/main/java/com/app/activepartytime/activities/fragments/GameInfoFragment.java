@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.app.activepartytime.R;
 
@@ -33,8 +34,9 @@ public class GameInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_game_info, container, false);
-        generateButton = (Button)v.findViewById(R.id.generate);
+        generateButton = (Button)v.findViewById(R.id.generateButton);
         taskInformation = (LinearLayout)v.findViewById(R.id.taskInformation);
+
 
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +49,8 @@ public class GameInfoFragment extends Fragment {
 
         return inflater.inflate(R.layout.fragment_game_info, container, false);
     }
+
+
 
 
 }
