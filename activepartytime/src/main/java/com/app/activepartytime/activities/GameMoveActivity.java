@@ -20,6 +20,8 @@ import android.widget.TextSwitcher;
 import com.app.activepartytime.R;
 import com.app.activepartytime.activities.fragments.GameInfoFragment;
 import com.app.activepartytime.activities.fragments.GamePlaygroundFragment;
+import com.app.activepartytime.core.data.tasks.TaskDB;
+import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
 
 /**
  * Created by Dave on 8.4.14.
@@ -30,6 +32,13 @@ public class GameMoveActivity extends FragmentActivity {
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
+    private TaskDatabaseHandler database;
+
+    private int side;
+    private Button card;
+
+    private TaskDB currentTask;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +47,11 @@ public class GameMoveActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+
+        database = new TaskDatabaseHandler(this);
+
+        side = 0;
+        currentTask = null;
     }
 
     @Override
@@ -77,7 +91,6 @@ public class GameMoveActivity extends FragmentActivity {
         }
     }
 
-    Button card;
     public void generateFunction(View view){
         Button generate = (Button)findViewById(R.id.generateButton);
         card = (Button)findViewById(R.id.card);
@@ -85,11 +98,12 @@ public class GameMoveActivity extends FragmentActivity {
         generate.setVisibility(RelativeLayout.INVISIBLE);
         generate.setEnabled(false);
         card.setVisibility(RelativeLayout.VISIBLE);
-        card.setText("Zadani");
+
+        currentTask = database.getRandomTask();
+
+        card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
         card.setEnabled(true);
     }
-
-    private int side = 0;
 
     public void flipCard(View view){
         if(side == 0){
@@ -97,9 +111,9 @@ public class GameMoveActivity extends FragmentActivity {
             card.setText("Zobrazit zadani");
             card.setTextColor(Color.CYAN);
             side = 1;
-        }else{
+        } else {
             card.setBackgroundColor(Color.BLUE);
-            card.setText("Zadani");
+            card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
             card.setTextColor(Color.YELLOW);
             side = 0;
         }

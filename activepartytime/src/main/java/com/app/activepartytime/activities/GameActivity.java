@@ -20,6 +20,7 @@ import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
 import com.app.activepartytime.core.game.Game;
 import com.app.activepartytime.core.game.Playground;
 import com.app.activepartytime.core.game.Team;
@@ -34,10 +35,14 @@ public class GameActivity extends Activity {
 
     private static final int LENGTH = 20;
 
+    private TaskDatabaseHandler database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        database = new TaskDatabaseHandler(this);
 
         Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
         teams = new Team[tmp.length];
