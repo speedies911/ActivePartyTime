@@ -49,7 +49,6 @@ public class GameMoveActivity extends FragmentActivity {
     private Team[] teams;
 
     private Game game;
-    private Playground playground;
 
     public static final int LENGTH = 30;
 

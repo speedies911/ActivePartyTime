@@ -38,4 +38,7 @@ public class Game {
         currentTeam = teams[next];
     }
 
+    public Playground getPlayground() {
+        return playground;
+    }
 }
