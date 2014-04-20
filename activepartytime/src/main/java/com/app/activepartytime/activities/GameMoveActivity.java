@@ -1,23 +1,26 @@
 package com.app.activepartytime.activities;
 
-import android.app.Activity;
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextSwitcher;
+import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.StartPageActivity;
 import com.app.activepartytime.activities.fragments.GameInfoFragment;
 import com.app.activepartytime.activities.fragments.GamePlaygroundFragment;
 import com.app.activepartytime.core.data.tasks.TaskDB;
@@ -25,6 +28,7 @@ import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
 import com.app.activepartytime.core.game.Game;
 import com.app.activepartytime.core.game.Playground;
 import com.app.activepartytime.core.game.Team;
+
 
 /**
  * Created by Dave on 8.4.14.
@@ -54,9 +58,39 @@ public class GameMoveActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_move);
 
+        //getActionBar().hide();
+
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+
+        // Specify that tabs should be displayed in the action bar.
+        ActionBar actionBar = getActionBar();
+
+        actionBar.setDisplayOptions(0);
+
+
+
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        // Create a tab listener that is called when the user changes tabs.
+        ActionBar.TabListener tabListener = new SimoTabListener();
+
+        mPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        // When swiping between pages, select the
+                        // corresponding tab.
+                        getActionBar().setSelectedNavigationItem(position);
+                    }
+                });
+
+        // Add 2 tabs, specifying the tab's text and TabListener
+
+        actionBar.addTab(actionBar.newTab().setText("Card").setTabListener(tabListener));
+        actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
+
 
         database = new TaskDatabaseHandler(this);
 
@@ -72,7 +106,6 @@ public class GameMoveActivity extends FragmentActivity {
         }
 
         game = new Game(LENGTH, teams);
-
     }
 
     @Override
@@ -82,7 +115,7 @@ public class GameMoveActivity extends FragmentActivity {
         } else {
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }*/
-        super.onBackPressed();
+
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
@@ -101,9 +134,7 @@ public class GameMoveActivity extends FragmentActivity {
                     fragment = new GamePlaygroundFragment();
                     break;
             }
-
             return fragment;
-
         }
 
         @Override
@@ -114,16 +145,20 @@ public class GameMoveActivity extends FragmentActivity {
 
     public void generateFunction(View view){
         Button generate = (Button)findViewById(R.id.generateButton);
-        card = (Button)findViewById(R.id.card);
+        card = (Button)findViewById(R.id.taskCard);
 
-        generate.setVisibility(RelativeLayout.INVISIBLE);
+        generate.setVisibility(RelativeLayout.GONE);
         generate.setEnabled(false);
         card.setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.stopWatch).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.startStopButton).setVisibility(RelativeLayout.VISIBLE);
 
         currentTask = database.getRandomTask();
 
         card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
         card.setEnabled(true);
+        timeInit(MAX_TIME_IN_MS);
+
     }
 
     public void flipCard(View view){
@@ -140,5 +175,134 @@ public class GameMoveActivity extends FragmentActivity {
         }
 
     }
+
+    /*
+    * Simo 2014 04 20 I have lost Petr's code that repairs time problem
+     */
+
+    private void timeInit(long maxTime){
+        startStopButton = (Button)findViewById(R.id.startStopButton);
+        timerDisplay = (TextView)findViewById(R.id.stopWatch);
+        timePause = maxTime;
+        /*
+        show time before countdown starts
+         */
+        StringBuffer time = new StringBuffer();
+        int milTime = (int) maxTime / 1000;
+        time.append('0');
+        int minutes = (int)milTime/60;
+        time.append(minutes);
+        time.append(':');
+        int seconds = milTime - 60*minutes;
+        time.append(milTime - 60*minutes);
+        if (seconds == 0){
+            time.append('0');
+        }
+        timerDisplay.setText(time.toString());
+
+        timerIsRunning = false;
+
+    }
+    /*
+    Petr Code 2014 04 17
+     */
+    private CountDownTimer timer;
+    private TextView timerDisplay;
+    private boolean timerIsRunning;
+    private long timePause;
+
+    private Button startStopButton;
+
+    private static final long MAX_TIME_IN_MS = 20 * 1000;//2 * 60 * 1000;
+    private static final long COUNTDOWN_INTERVAL_IN_MS = 1000;
+    public void startStop(View view) {
+        if (timerIsRunning) {
+            timer.cancel();
+            timerIsRunning = false;
+        } else {
+            timer = new CountDownTimer(timePause, COUNTDOWN_INTERVAL_IN_MS) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    StringBuffer time = new StringBuffer();
+                    int milTime = (int) millisUntilFinished / 1000;
+                    time.append('0');
+                    int minutes = (int)milTime/60;
+                    time.append(minutes);
+                    time.append(':');
+                    int seconds = milTime - 60*minutes;
+                    if (seconds < 10){
+                        time.append('0');
+                    }
+                    time.append(milTime - 60*minutes);
+                    if(seconds == 0){
+                        time.append('0');
+                    }
+                    timerDisplay.setText(time.toString());
+                    timePause = millisUntilFinished;
+
+                }
+
+                @Override
+                public void onFinish() {
+                    timerDisplay.setText("END !!!");
+                }
+            }.start();
+            timerIsRunning = true;
+        }
+    }
+
+
+    /*
+        Scroll settings list
+     */
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.game_move, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.action_quit) {
+            Intent intent = new Intent(this, StartPageActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); startActivity(intent);
+
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+//tabListener 2014 04 17
+    public class SimoTabListener implements ActionBar.TabListener {
+
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        mPager.setCurrentItem(tab.getPosition());
+    }
+
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+        // hide the given tab
+    }
+
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+        // probably ignore this event
+    }
+
+
+
+
+}
+
+
+
 
 }

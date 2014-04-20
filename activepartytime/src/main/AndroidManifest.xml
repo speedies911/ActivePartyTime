@@ -66,6 +66,7 @@
         <activity
             android:name="com.app.activepartytime.activities.GameMoveActivity"
             android:label="@string/title_activity_game_move"
+            android:screenOrientation="portrait"
             android:parentActivityName="com.app.activepartytime.activities.SingleDeviceTeams" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

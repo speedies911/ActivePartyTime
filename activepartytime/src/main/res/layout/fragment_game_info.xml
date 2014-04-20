@@ -1,58 +1,87 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/content"
     tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment"
-    android:fillViewport="false">
+    android:fillViewport="false"
+    >
 
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:context="com.app.activepartytime.activities.GameMoveActivity"
+        tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment"
         android:background="#00741d"
         tools:ignore="MergeRootFrame"
-        android:minHeight="500dp">
+        android:minHeight="500dp"
+        android:minWidth="500dp">
 
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Team's Name will be here"
             android:id="@+id/activeTeam"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:background="#dfdfdf"
-            />
+            android:minHeight="40dp"
+            android:minWidth="100dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Generate"
+            android:text="GENERATE TASK"
             android:id="@+id/generateButton"
             android:layout_below="@+id/activeTeam"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="31dp"
-
-            android:textColor="@color/White"
-            android:onClick="generateFunction"
-            android:width="150dp"
-            android:height="150dp" />
+            android:layout_alignParentStart="false"
+            android:minWidth="200dp"
+            android:minHeight="200dp"
+            android:onClick="generateFunction"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/card"
-            android:height="220dp"
-            android:width="250dp"
+            android:text="Karta"
+            android:id="@+id/taskCard"
             android:layout_below="@+id/generateButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="51dp"
-            android:visibility="invisible"
-            android:background="@color/Blue"
-            android:enabled="false"
-            android:onClick="flipCard" />
+            android:minWidth="200dp"
+            android:minHeight="200dp"
+            android:onClick="flipCard"
+            android:visibility="gone" />
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="START/PAUSE"
+            android:id="@+id/startStopButton"
+            android:onClick="startStop"
+            android:layout_below="@+id/taskCard"
+            android:layout_marginLeft="@dimen/activity_time_button_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="TIME"
+            android:id="@+id/stopWatch"
+            android:minWidth="100dp"
+            android:minHeight="50dp"
+            android:layout_below="@+id/taskCard"
+            android:layout_marginLeft="@dimen/activity_time_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textIsSelectable="false"
+            android:gravity="center" />
 
     </RelativeLayout>
 
-</ScrollView>
+</LinearLayout>

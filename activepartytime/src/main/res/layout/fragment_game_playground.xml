@@ -1,26 +1,46 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/container"
+    android:fillViewport="true"
+    android:orientation="vertical" >
+
+
+<HorizontalScrollView
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.app.activepartytime.activities.fragments.GamePlaygroundFragment">
+    tools:context="com.app.activepartytime.activities.gamePlaygroundActivity"
 
-    <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="START / STOP"
-        android:id="@+id/startstop"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="82dp"
-    />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#00741d"
+    tools:ignore="MergeRootFrame"
+    android:minHeight="250dp"
+    android:minWidth="500dp"
+    android:orientation="horizontal"
+    android:fillViewport="false">
 
-    <TextView
-        android:id="@+id/timerDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/containerPlayground">
 
-</RelativeLayout>
+        </RelativeLayout>
+</HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:fillViewport="false"
+        android:background="#11211d">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/containerInfoList"></LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
