@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.activities.GameMoveActivity;
 import com.app.activepartytime.core.game.Game;
 import com.app.activepartytime.core.game.Playground;
 import com.app.activepartytime.core.game.Team;
@@ -38,12 +39,14 @@ public class GamePlaygroundFragment extends Fragment {
     private int currentTeam;
     private ImageView[] figures;
     private TextView[] teamPositions;
+    private GameMoveActivity activity;
 
-    public GamePlaygroundFragment(Game g) {
+    public GamePlaygroundFragment(Game g, GameMoveActivity ac) {
         // Required empty public constructor
         playground = g.getPlayground();
         teams = g.getTeams();
         currentTeam = 0;
+        activity = ac;
     }
 
 
@@ -62,6 +65,8 @@ public class GamePlaygroundFragment extends Fragment {
         createPlayground();
         createTeamList();
         createFigures();
+        ImageView teamPlayButton = (ImageView)v.findViewById("teamPlayButton".hashCode()+currentTeam);
+        teamPlayButton.setVisibility(View.VISIBLE);
 
 
 
@@ -188,8 +193,19 @@ public class GamePlaygroundFragment extends Fragment {
             imagePlay.setId("teamPlayButton".hashCode() + i);
             imagePlay.setLayoutParams(layoutParams);
             imagePlay.setVisibility(View.GONE);
+            imagePlay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    changePage();
+                }
+            });
             row.addView(imagePlay);
         }
+
+    }
+
+    private void changePage(){
+        activity.mPager.setCurrentItem(0);
 
     }
 

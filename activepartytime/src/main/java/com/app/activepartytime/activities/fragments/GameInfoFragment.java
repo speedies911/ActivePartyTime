@@ -54,6 +54,7 @@ public class GameInfoFragment extends Fragment {
     private View view1;
     private Game game;
     private GameMoveActivity activity;
+    private TextView teamName;
 
     public GameInfoFragment(Game game, GameMoveActivity gameMoveActivity) {
         // Required empty public constructor
@@ -73,11 +74,13 @@ public class GameInfoFragment extends Fragment {
         view1 = inflater.inflate(R.layout.fragment_game_info, container, false);
         tick = (ImageButton) view1.findViewById(R.id.tickButton);
         cross = (ImageButton) view1.findViewById(R.id.crossButton);
+        teamName = (TextView) view1.findViewById(R.id.activeTeam);
 
 
         generateButton = (Button) view1.findViewById(R.id.generateButton);
         startStopButton = (Button) view1.findViewById(R.id.startStopButton);
         card = (Button) view1.findViewById(R.id.taskCard);
+        setCurrentTeam();
 
 
 
@@ -107,6 +110,13 @@ public class GameInfoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 success();
+            }
+        });
+
+        cross.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                failed();
             }
         });
 
@@ -153,7 +163,6 @@ public class GameInfoFragment extends Fragment {
 
     private void timeInit(long maxTime){
 
-        startStopButton = (Button)view1.findViewById(R.id.startStopButton);
         timerDisplay = (TextView)view1.findViewById(R.id.stopWatch);
         timePause = maxTime;
         /*
@@ -206,18 +215,40 @@ public class GameInfoFragment extends Fragment {
 
     }
 
-    public void success() {
+    private void success() {
         game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
         game.nextTeam();
 
-        activity.update();
+        activity.updatePlaygroundFragment();
+        createNewView();
+
+    }
+
+    private void failed(){
+        game.nextTeam();
+
+        activity.updatePlaygroundFragment();
+        createNewView();
 
     }
 
     private void createNewView(){
         timerDisplay.setVisibility(View.GONE);
         generateButton.setVisibility(View.VISIBLE);
-        
+        generateButton.setEnabled(true);
+        card.setVisibility(View.GONE);
+        startStopButton.setVisibility(View.GONE);
+        tick.setVisibility(View.GONE);
+        cross.setVisibility(View.GONE);
+        timer.cancel();
+        timeInit(MAX_TIME_IN_MS);
+        setCurrentTeam();
+
+
+    }
+
+    private void setCurrentTeam(){
+        teamName.setText(game.getCurrentTeam().getName());
 
     }
 

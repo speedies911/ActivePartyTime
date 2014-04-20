@@ -66,7 +66,7 @@ public class GameMoveActivity extends FragmentActivity {
         //getActionBar().hide();
 
         gameInfoFragment = new GameInfoFragment(game, this);
-        gamePlaygroundFragment = new GamePlaygroundFragment(game);
+        gamePlaygroundFragment = new GamePlaygroundFragment(game,this);
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -101,12 +101,13 @@ public class GameMoveActivity extends FragmentActivity {
     }
 
 
-    public void update() {
+    public void updatePlaygroundFragment() {
 
         gamePlaygroundFragment.updateState();
 
         mPager.setCurrentItem(1);
     }
+
 
     @Override
     public void onBackPressed() {
