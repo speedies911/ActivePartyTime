@@ -74,22 +74,12 @@ public class GameInfoFragment extends Fragment {
         startStopButton = (Button) view1.findViewById(R.id.startStopButton);
         card = (Button) view1.findViewById(R.id.taskCard);
 
+
+
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("JO");
-
-                generateButton.setVisibility(RelativeLayout.GONE);
-                generateButton.setEnabled(false);
-                card.setVisibility(RelativeLayout.VISIBLE);
-                view1.findViewById(R.id.stopWatch).setVisibility(RelativeLayout.VISIBLE);
-                view1.findViewById(R.id.startStopButton).setVisibility(RelativeLayout.VISIBLE);
-
-                currentTask = database.getRandomTask();
-
-                card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
-                card.setEnabled(true);
-                timeInit(MAX_TIME_IN_MS);
+                generateFunction();
             }
         });
 
@@ -109,7 +99,7 @@ public class GameInfoFragment extends Fragment {
             }
         });
 
-        return inflater.inflate(R.layout.fragment_game_info, container, false);
+        return view1;
     }
 
     private void startStopFunc () {
@@ -177,7 +167,6 @@ public class GameInfoFragment extends Fragment {
 
     public void generateFunction(){
 
-        System.out.println("JO");
 
         generateButton.setVisibility(RelativeLayout.GONE);
         generateButton.setEnabled(false);

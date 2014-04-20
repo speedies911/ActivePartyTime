@@ -44,8 +44,10 @@ public class GameMoveActivity extends FragmentActivity {
     private Team[] teams;
 
     private Game game;
+    private GamePlaygroundFragment gamePlaygroundFragment;
 
     public static final int LENGTH = 30;
+
 
 
 
@@ -100,13 +102,7 @@ public class GameMoveActivity extends FragmentActivity {
 
         game = new Game(LENGTH, teams);
 
-        Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
-        teams = new Team[tmp.length];
 
-
-        for (int i = 0; i < tmp.length; i++) {
-            teams[i] = (Team)tmp[i];
-        }
 
         game = new Game(LENGTH, teams);
     }
@@ -134,7 +130,8 @@ public class GameMoveActivity extends FragmentActivity {
                     fragment = new GameInfoFragment();
                     break;
                 case 1:
-                    fragment = new GamePlaygroundFragment(game.getPlayground(),teams);
+                    gamePlaygroundFragment = new GamePlaygroundFragment(game);
+                    fragment = gamePlaygroundFragment;
                     break;
             }
             return fragment;

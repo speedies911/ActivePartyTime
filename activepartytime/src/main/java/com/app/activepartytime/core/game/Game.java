@@ -41,4 +41,8 @@ public class Game {
     public Playground getPlayground() {
         return playground;
     }
+
+    public Team[] getTeams() {
+        return teams;
+    }
 }
