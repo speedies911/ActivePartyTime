@@ -32,6 +32,8 @@ import com.app.activepartytime.StartPageActivity;
 import com.app.activepartytime.activities.fragments.GameInfoFragment;
 import com.app.activepartytime.activities.fragments.GamePlaygroundFragment;
 
+import com.app.activepartytime.core.data.tasks.TaskDB;
+import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
 import com.app.activepartytime.core.game.SimoViewPager;
 
 import java.util.List;
@@ -92,7 +94,10 @@ public class GameMoveActivity extends FragmentActivity {
         actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
 
 
+        database = new TaskDatabaseHandler(this);
 
+        side = 0;
+        currentTask = null;
 
     }
 
@@ -138,11 +143,14 @@ public class GameMoveActivity extends FragmentActivity {
         generate.setVisibility(RelativeLayout.GONE);
         generate.setEnabled(false);
         card.setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.stopWatch).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.startStopButton).setVisibility(RelativeLayout.VISIBLE);
 
         currentTask = database.getRandomTask();
 
         card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
         card.setEnabled(true);
+        timeInit(MAX_TIME_IN_MS);
 
     }
 
@@ -160,33 +168,76 @@ public class GameMoveActivity extends FragmentActivity {
         }
 
     }
+
+    /*
+    * Simo 2014 04 20 I have lost Petr's code that repairs time problem
+     */
+
+    private void timeInit(long maxTime){
+        startStopButton = (Button)findViewById(R.id.startStopButton);
+        timerDisplay = (TextView)findViewById(R.id.stopWatch);
+        timePause = maxTime;
+        /*
+        show time before countdown starts
+         */
+        StringBuffer time = new StringBuffer();
+        int milTime = (int) maxTime / 1000;
+        time.append('0');
+        int minutes = (int)milTime/60;
+        time.append(minutes);
+        time.append(':');
+        int seconds = milTime - 60*minutes;
+        time.append(milTime - 60*minutes);
+        if (seconds == 0){
+            time.append('0');
+        }
+        timerDisplay.setText(time.toString());
+
+        timerIsRunning = false;
+
+    }
     /*
     Petr Code 2014 04 17
      */
     private CountDownTimer timer;
     private TextView timerDisplay;
     private boolean timerIsRunning;
+    private long timePause;
 
     private Button startStopButton;
 
-    private static final long MAX_TIME_IN_MS = 2 * 60 * 1000;
+    private static final long MAX_TIME_IN_MS = 20 * 1000;//2 * 60 * 1000;
     private static final long COUNTDOWN_INTERVAL_IN_MS = 1000;
     public void startStop(View view) {
-        startStopButton = (Button)findViewById(R.id.startStopButton);
-        timerDisplay = (TextView)findViewById(R.id.stopWatch);
         if (timerIsRunning) {
             timer.cancel();
             timerIsRunning = false;
         } else {
-            timer = new CountDownTimer(MAX_TIME_IN_MS, COUNTDOWN_INTERVAL_IN_MS) {
+            timer = new CountDownTimer(timePause, COUNTDOWN_INTERVAL_IN_MS) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    timerDisplay.setText(millisUntilFinished / 1000 + "s");
+                    StringBuffer time = new StringBuffer();
+                    int milTime = (int) millisUntilFinished / 1000;
+                    time.append('0');
+                    int minutes = (int)milTime/60;
+                    time.append(minutes);
+                    time.append(':');
+                    int seconds = milTime - 60*minutes;
+                    if (seconds < 10){
+                        time.append('0');
+                    }
+                    time.append(milTime - 60*minutes);
+                    if(seconds == 0){
+                        time.append('0');
+                    }
+                    timerDisplay.setText(time.toString());
+                    timePause = millisUntilFinished;
+
                 }
 
                 @Override
                 public void onFinish() {
-                    timerDisplay.setText("TIME OUT !!!");
+                    timerDisplay.setText("END !!!");
                 }
             }.start();
             timerIsRunning = true;
