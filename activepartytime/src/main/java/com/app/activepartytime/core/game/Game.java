@@ -10,38 +10,32 @@ public class Game {
     private Playground playground;
     private Team[] teams;
 
+    private Team currentTeam;
+
     public Game(int playgroundLength, Team[] teams) {
         this.playground = new Playground(playgroundLength);
         this.playground.generateTasks();
 
         this.teams = teams;
+        this.currentTeam = null;
     }
 
     /**
      * TODO
      * @param team
      */
-    public void move(Team team) {
-
-        Task task = playground.getTask(team.getPlaygroundPosition());
-
-        // PERFORMING TASK
-        // WAITING FOR RESPONSE
-
-        /*if (DONE) {
-            team.moveTeam(task.getPoints());
-        }*/
-
+    public void moveTeam(Team team, int points) {
+        team.moveTeam(points);
     }
 
-    /**
-     * TODO fix while condition and complete the game progress
-     */
-    public void play() {
-        while(true) {
-            for (Team team : teams) {
-                move(team);
-            }
-        }
+    public void startGame() {
+        currentTeam = teams[0];
     }
+
+    public void nextTeam() {
+        int id = currentTeam.getId();
+        int next = (id+1) % teams.length;
+        currentTeam = teams[next];
+    }
+
 }

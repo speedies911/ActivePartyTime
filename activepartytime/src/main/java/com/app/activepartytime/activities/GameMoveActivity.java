@@ -22,6 +22,9 @@ import com.app.activepartytime.activities.fragments.GameInfoFragment;
 import com.app.activepartytime.activities.fragments.GamePlaygroundFragment;
 import com.app.activepartytime.core.data.tasks.TaskDB;
 import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
+import com.app.activepartytime.core.game.Game;
+import com.app.activepartytime.core.game.Playground;
+import com.app.activepartytime.core.game.Team;
 
 /**
  * Created by Dave on 8.4.14.
@@ -38,6 +41,13 @@ public class GameMoveActivity extends FragmentActivity {
     private Button card;
 
     private TaskDB currentTask;
+    private Team currentTeam;
+    private Team[] teams;
+
+    private Game game;
+    private Playground playground;
+
+    public static final int LENGTH = 30;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +62,17 @@ public class GameMoveActivity extends FragmentActivity {
 
         side = 0;
         currentTask = null;
+
+        Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
+        teams = new Team[tmp.length];
+
+
+        for (int i = 0; i < tmp.length; i++) {
+            teams[i] = (Team)tmp[i];
+        }
+
+        game = new Game(LENGTH, teams);
+
     }
 
     @Override
