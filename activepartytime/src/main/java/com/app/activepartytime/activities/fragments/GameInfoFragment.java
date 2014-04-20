@@ -79,6 +79,8 @@ public class GameInfoFragment extends Fragment {
         startStopButton = (Button) view1.findViewById(R.id.startStopButton);
         card = (Button) view1.findViewById(R.id.taskCard);
 
+
+
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

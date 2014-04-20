@@ -43,10 +43,9 @@ public class GameMoveActivity extends FragmentActivity {
     private Team[] teams;
 
     private Game game;
+    private GamePlaygroundFragment gamePlaygroundFragment;
 
     public static final int LENGTH = 30;
-
-    private GamePlaygroundFragment gamePlaygroundFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +97,7 @@ public class GameMoveActivity extends FragmentActivity {
         game.startGame();
     }
 
+
     public void update() {
         gamePlaygroundFragment.updateState();
     }
@@ -125,7 +125,7 @@ public class GameMoveActivity extends FragmentActivity {
                     fragment = new GameInfoFragment(game);
                     break;
                 case 1:
-                    gamePlaygroundFragment = new GamePlaygroundFragment(game.getPlayground(),teams);
+                    gamePlaygroundFragment = new GamePlaygroundFragment(game);
                     fragment = gamePlaygroundFragment;
                     break;
             }
