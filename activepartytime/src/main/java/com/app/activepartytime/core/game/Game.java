@@ -38,7 +38,15 @@ public class Game {
         currentTeam = teams[next];
     }
 
+    public Team getCurrentTeam() {
+        return currentTeam;
+    }
+
     public Playground getPlayground() {
         return playground;
+    }
+
+    public Team[] getTeams() {
+        return teams;
     }
 }
