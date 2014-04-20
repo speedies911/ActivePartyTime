@@ -72,6 +72,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app.activepartytime.activities.SingleDeviceTeams" />
         </activity>
+        <activity
+            android:name="com.app.activepartytime.activities.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+
     </application>
 
 </manifest>

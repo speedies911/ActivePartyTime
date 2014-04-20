@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.app.activepartytime.activities.SettingsActivity;
 import com.app.activepartytime.activities.SingleDeviceTeams;
 import com.app.activepartytime.activities.WiFiTeams;
 import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
@@ -77,6 +78,18 @@ public class StartPageActivity extends Activity {
 
     public void play (View view) {
         playDialog();
+    }
+
+    Intent settingsIntent = null;
+    public void settings(View view){
+        if(settingsIntent == null){
+            settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+        }else{
+            System.out.println("Jsou tam data");
+
+        }
+
     }
 
     public void oneDevice() {

@@ -65,6 +65,7 @@ public class GamePlaygroundFragment extends Fragment {
         createPlayground();
         createTeamList();
         createFigures();
+
         ImageView teamPlayButton = (ImageView)v.findViewById("teamPlayButton".hashCode()+currentTeam);
         teamPlayButton.setVisibility(View.VISIBLE);
 

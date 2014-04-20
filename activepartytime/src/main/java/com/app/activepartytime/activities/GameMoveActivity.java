@@ -31,6 +31,13 @@ import com.app.activepartytime.core.game.Playground;
 import com.app.activepartytime.core.game.Team;
 
 
+import com.app.activepartytime.core.data.tasks.TaskDB;
+import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
+import com.app.activepartytime.core.game.SimoViewPager;
+
+import java.util.List;
+
+
 /**
  * Created by Dave on 8.4.14.
  */
@@ -96,7 +103,7 @@ public class GameMoveActivity extends FragmentActivity {
         // Add 2 tabs, specifying the tab's text and TabListener
 
         actionBar.addTab(actionBar.newTab().setText("Card").setTabListener(tabListener));
-        actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
+        actionBar.addTab(actionBar.newTab().setText("Playground").setTabListener(tabListener));
         game.startGame();
     }
 
@@ -183,14 +190,9 @@ public class GameMoveActivity extends FragmentActivity {
 
         public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
             // probably ignore this event
+
         }
 
-
-
-
     }
-
-
-
 
 }
