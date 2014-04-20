@@ -4,6 +4,8 @@ import android.graphics.drawable.Drawable;
 
 import com.app.activepartytime.R;
 
+import java.util.Random;
+
 /**
  * Created by Dave on 13.3.14.
  */
@@ -11,8 +13,7 @@ public enum TaskType {
 
     DRAWING("Drawing", R.drawable.drawing),
     SPEAKING("Talking", R.drawable.speaking),
-    PANTOMIME("Pantomime", R.drawable.pantomime),
-    MAZE("Maze", R.drawable.maze);
+    PANTOMIME("Pantomime", R.drawable.pantomime);
 
     private final int imageLocation;
     private final String name;
@@ -35,8 +36,10 @@ public enum TaskType {
      * @return random tasktype
      */
     public static TaskType getRandomType() {
-        int rand = (int)Math.random()*4;
-        TaskType[] types = {DRAWING,SPEAKING,PANTOMIME,MAZE};
+        Random r = new Random();
+        int rand = r.nextInt(3);
+
+        TaskType[] types = {DRAWING,SPEAKING,PANTOMIME};
         return types[rand];
     }
 }

@@ -82,6 +82,25 @@
             android:textIsSelectable="false"
             android:gravity="center" />
 
+        <ImageButton
+
+            android:id="@+id/crossButton"
+            android:background="@drawable/cross"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_height="100dp"
+            android:layout_width="100dp"/>
+
+        <ImageButton
+            android:id="@+id/tickButton"
+            android:background="@drawable/tick"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="200dp"
+            android:layout_alignParentLeft="@+id/crossButton"
+            android:layout_height="100dp"
+            android:layout_width="100dp"/>
+
     </RelativeLayout>
 
 </LinearLayout>
