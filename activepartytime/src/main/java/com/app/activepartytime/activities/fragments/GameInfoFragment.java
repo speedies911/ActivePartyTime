@@ -71,7 +71,6 @@ public class GameInfoFragment extends Fragment {
 
 
         generateButton = (Button) view1.findViewById(R.id.generateButton);
-        generateButton.setClickable(true);
         startStopButton = (Button) view1.findViewById(R.id.startStopButton);
         card = (Button) view1.findViewById(R.id.taskCard);
 

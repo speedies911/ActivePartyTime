@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:text="GENERATE TASK"
             android:id="@+id/generateButton"
+            android:clickable="true"
             android:layout_below="@+id/activeTeam"
             android:layout_centerHorizontal="true"
             android:layout_alignParentStart="false"
