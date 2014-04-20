@@ -31,9 +31,11 @@ import com.app.activepartytime.R;
 import com.app.activepartytime.StartPageActivity;
 import com.app.activepartytime.activities.fragments.GameInfoFragment;
 import com.app.activepartytime.activities.fragments.GamePlaygroundFragment;
+
 import com.app.activepartytime.core.game.SimoViewPager;
 
 import java.util.List;
+
 
 /**
  * Created by Dave on 8.4.14.
@@ -43,6 +45,13 @@ public class GameMoveActivity extends FragmentActivity {
     private static final int NUM_PAGES = 2;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
+
+    private TaskDatabaseHandler database;
+
+    private int side;
+    private Button card;
+
+    private TaskDB currentTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,7 @@ public class GameMoveActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+
         // Specify that tabs should be displayed in the action bar.
         ActionBar actionBar = getActionBar();
 
@@ -80,6 +90,7 @@ public class GameMoveActivity extends FragmentActivity {
 
         actionBar.addTab(actionBar.newTab().setText("Card").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
+
 
 
 
@@ -120,7 +131,6 @@ public class GameMoveActivity extends FragmentActivity {
         }
     }
 
-    Button card;
     public void generateFunction(View view){
         Button generate = (Button)findViewById(R.id.generateButton);
         card = (Button)findViewById(R.id.taskCard);
@@ -128,12 +138,13 @@ public class GameMoveActivity extends FragmentActivity {
         generate.setVisibility(RelativeLayout.GONE);
         generate.setEnabled(false);
         card.setVisibility(RelativeLayout.VISIBLE);
-        card.setText("Zadani");
+
+        currentTask = database.getRandomTask();
+
+        card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
         card.setEnabled(true);
 
     }
-
-    private int side = 0;
 
     public void flipCard(View view){
         if(side == 0){
@@ -141,9 +152,9 @@ public class GameMoveActivity extends FragmentActivity {
             card.setText("Zobrazit zadani");
             card.setTextColor(Color.CYAN);
             side = 1;
-        }else{
+        } else {
             card.setBackgroundColor(Color.BLUE);
-            card.setText("Zadani");
+            card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
             card.setTextColor(Color.YELLOW);
             side = 0;
         }

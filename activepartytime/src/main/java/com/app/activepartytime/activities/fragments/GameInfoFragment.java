@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
 
 
 /**
@@ -24,8 +25,11 @@ public class GameInfoFragment extends Fragment {
     private Button generateButton;
     private LinearLayout taskInformation;
 
+
+
     public GameInfoFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -34,7 +38,9 @@ public class GameInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_game_info, container, false);
+
         generateButton = (Button)v.findViewById(R.id.generateButton);
+
         taskInformation = (LinearLayout)v.findViewById(R.id.taskInformation);
 
 
@@ -44,6 +50,7 @@ public class GameInfoFragment extends Fragment {
                 generateButton.setVisibility(RelativeLayout.GONE);
                 generateButton.setEnabled(false);
                 taskInformation.setVisibility(RelativeLayout.VISIBLE);
+
             }
         });
 

@@ -3,8 +3,10 @@ package com.app.activepartytime;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,8 +15,16 @@ import android.widget.Toast;
 
 import com.app.activepartytime.activities.SingleDeviceTeams;
 import com.app.activepartytime.activities.WiFiTeams;
+import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
 
 public class StartPageActivity extends Activity {
+
+    public static final String MY_PREFERENCES = "prefs" ;
+    public static final String DB_INIT = "dbKey";
+
+    private SharedPreferences sharedPreferences;
+    private TaskDatabaseHandler database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +32,22 @@ public class StartPageActivity extends Activity {
         setContentView(R.layout.activity_start_page);
         ActionBar actionBar = getActionBar();
         actionBar.hide();
-        /*if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }*/
+
+        sharedPreferences = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+        if (!sharedPreferences.contains(DB_INIT)) {
+            // TODO - popup status window
+            System.out.println("First instance - filling database");
+
+            initDatabase();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(DB_INIT, true);
+            editor.commit();
+        }
+    }
+
+    private void initDatabase() {
+        database = new TaskDatabaseHandler(this);
+        database.fillDatabase();
     }
 
 
@@ -89,21 +110,5 @@ public class StartPageActivity extends Activity {
             builder.setNegativeButton("Cancel",null);
             builder.show();
         }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    /*public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_start_page, container, false);
-            return rootView;
-        }
-    }*/
 
 }

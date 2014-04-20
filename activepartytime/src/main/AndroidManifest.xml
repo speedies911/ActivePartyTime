@@ -71,10 +71,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.app.activepartytime.activities.SingleDeviceTeams" />
         </activity>
-        <provider
-            android:name="com.app.activepartytime.core.data.contentproviders.TaskContentProvider"
-            android:authorities="com.app.activepartytime.core.data.contentproviders" >
-        </provider>
     </application>
 
 </manifest>
