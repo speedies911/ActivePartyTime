@@ -36,6 +36,8 @@ public class GamePlaygroundFragment extends Fragment {
     private Team[] teams;
     private View v;
     private int currentTeam;
+    private ImageView[] figures;
+    private TextView[] teamPositions;
 
     public GamePlaygroundFragment(Game g) {
         // Required empty public constructor
@@ -108,6 +110,7 @@ public class GamePlaygroundFragment extends Fragment {
 
         LinearLayout layoutTeamList = (LinearLayout) v.findViewById(R.id.containerInfoList);
         RelativeLayout.LayoutParams layoutParams;
+        teamPositions = new TextView[teams.length];
         for (int i = 0; i < teams.length; i++) {
             RelativeLayout row = new RelativeLayout(getActivity());
             row.setId("row".hashCode() + i);
@@ -170,6 +173,7 @@ public class GamePlaygroundFragment extends Fragment {
 
 
             layoutTeamList.addView(row);
+            teamPositions[i] = teamPositionTextView;
 
             /*
             * button image
@@ -192,6 +196,7 @@ public class GamePlaygroundFragment extends Fragment {
     private void createFigures(){
         RelativeLayout layoutPlayground = (RelativeLayout) v.findViewById(R.id.containerPlayground);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(140, 200);
+        figures = new ImageView[teams.length];
 
         for(int i=0 ; i < teams.length; i++){
             ImageView image = new ImageView(getActivity());
@@ -209,6 +214,7 @@ public class GamePlaygroundFragment extends Fragment {
             image.setLayoutParams(layoutParams);
 
             layoutPlayground.addView(image);
+            figures[i] = image;
 
         }
     }
@@ -226,7 +232,7 @@ public class GamePlaygroundFragment extends Fragment {
          */
         RelativeLayout.LayoutParams layoutParams;
         for (int i=0; i <teams.length; i++){
-            ImageView image = (ImageView)v.findViewById("teamFigure".hashCode()+i);
+            ImageView image = figures[i];//(ImageView)v.findViewById("teamFigure".hashCode()+i);
             layoutParams = new RelativeLayout.LayoutParams(140, 200);
             layoutParams.setMargins(24,0,24,0);
             layoutParams.addRule(RelativeLayout.RIGHT_OF, teams[i].getPlaygroundPosition());
@@ -237,7 +243,7 @@ public class GamePlaygroundFragment extends Fragment {
          * update teamList
          */
         for (int i=0; i <teams.length; i++){
-            TextView teamPositionTextView = (TextView)v.findViewById("teamPositionText".hashCode() + i);
+            TextView teamPositionTextView = teamPositions[i];//(TextView)v.findViewById("teamPositionText".hashCode() + i);
             StringBuffer text = new StringBuffer();
             text.append("Position: ");
             int teamPosition = teams[i].getPlaygroundPosition();

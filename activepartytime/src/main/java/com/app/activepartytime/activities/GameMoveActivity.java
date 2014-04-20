@@ -37,28 +37,36 @@ import com.app.activepartytime.core.game.Team;
 public class GameMoveActivity extends FragmentActivity {
 
     private static final int NUM_PAGES = 2;
-    private ViewPager mPager;
+    public ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
-    private Team currentTeam;
     private Team[] teams;
 
     private Game game;
+
+    private GameInfoFragment gameInfoFragment;
     private GamePlaygroundFragment gamePlaygroundFragment;
 
     public static final int LENGTH = 30;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_move);
 
+        Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
+        teams = new Team[tmp.length];
+
+
+        for (int i = 0; i < tmp.length; i++) {
+            teams[i] = (Team)tmp[i];
+        }
+
+        game = new Game(LENGTH, teams);
         //getActionBar().hide();
+
+        gameInfoFragment = new GameInfoFragment(game, this);
+        gamePlaygroundFragment = new GamePlaygroundFragment(game);
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -68,7 +76,6 @@ public class GameMoveActivity extends FragmentActivity {
         ActionBar actionBar = getActionBar();
 
         actionBar.setDisplayOptions(0);
-
 
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -90,21 +97,15 @@ public class GameMoveActivity extends FragmentActivity {
 
         actionBar.addTab(actionBar.newTab().setText("Card").setTabListener(tabListener));
         actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
+        game.startGame();
+    }
 
 
-        Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
-        teams = new Team[tmp.length];
+    public void update() {
 
+        gamePlaygroundFragment.updateState();
 
-        for (int i = 0; i < tmp.length; i++) {
-            teams[i] = (Team)tmp[i];
-        }
-
-        game = new Game(LENGTH, teams);
-
-
-
-        game = new Game(LENGTH, teams);
+        mPager.setCurrentItem(1);
     }
 
     @Override
@@ -125,16 +126,11 @@ public class GameMoveActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
             Fragment fragment = null;
-            switch(position) {
-                case 0:
-                    fragment = new GameInfoFragment();
-                    break;
-                case 1:
-                    gamePlaygroundFragment = new GamePlaygroundFragment(game);
-                    fragment = gamePlaygroundFragment;
-                    break;
+            if (position == 0) {
+                return gameInfoFragment;
+            } else {
+                return gamePlaygroundFragment;
             }
-            return fragment;
         }
 
         @Override

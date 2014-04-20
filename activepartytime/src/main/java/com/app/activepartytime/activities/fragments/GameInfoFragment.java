@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.activities.GameMoveActivity;
 import com.app.activepartytime.core.data.tasks.TaskDB;
 import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
+import com.app.activepartytime.core.game.Game;
 
 
 /**
@@ -34,11 +37,11 @@ public class GameInfoFragment extends Fragment {
 
     private int side;
 
-    private ImageButton tick;
-    private ImageButton cross;
-
     private Button startStopButton;
     private Button card;
+
+    private ImageButton tick;
+    private ImageButton cross;
 
     private static final long MAX_TIME_IN_MS = 20 * 1000;//2 * 60 * 1000;
     private static final long COUNTDOWN_INTERVAL_IN_MS = 1000;
@@ -49,10 +52,13 @@ public class GameInfoFragment extends Fragment {
     private long timePause;
 
     private View view1;
+    private Game game;
+    private GameMoveActivity activity;
 
-    public GameInfoFragment() {
+    public GameInfoFragment(Game game, GameMoveActivity gameMoveActivity) {
         // Required empty public constructor
-
+        this.game = game;
+        this.activity = gameMoveActivity;
     }
 
 
@@ -65,7 +71,6 @@ public class GameInfoFragment extends Fragment {
         currentTask = null;
 
         view1 = inflater.inflate(R.layout.fragment_game_info, container, false);
-
         tick = (ImageButton) view1.findViewById(R.id.tickButton);
         cross = (ImageButton) view1.findViewById(R.id.crossButton);
 
@@ -96,6 +101,12 @@ public class GameInfoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 flipCard();
+            }
+        });
+        tick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                success();
             }
         });
 
@@ -166,8 +177,6 @@ public class GameInfoFragment extends Fragment {
     }
 
     public void generateFunction(){
-
-
         generateButton.setVisibility(RelativeLayout.GONE);
         generateButton.setEnabled(false);
         card.setVisibility(RelativeLayout.VISIBLE);
@@ -194,6 +203,21 @@ public class GameInfoFragment extends Fragment {
             card.setTextColor(Color.YELLOW);
             side = 0;
         }
+
+    }
+
+    public void success() {
+        game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
+        game.nextTeam();
+
+        activity.update();
+
+    }
+
+    private void createNewView(){
+        timerDisplay.setVisibility(View.GONE);
+        generateButton.setVisibility(View.VISIBLE);
+        
 
     }
 
