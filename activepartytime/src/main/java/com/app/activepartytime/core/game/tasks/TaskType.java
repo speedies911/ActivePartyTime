@@ -4,6 +4,8 @@ import android.graphics.drawable.Drawable;
 
 import com.app.activepartytime.R;
 
+import java.util.Random;
+
 /**
  * Created by Dave on 13.3.14.
  */
@@ -34,7 +36,10 @@ public enum TaskType {
      * @return random tasktype
      */
     public static TaskType getRandomType() {
-        int rand = (int)Math.random()*3;
+        Random r = new Random();
+        int rand = r.nextInt(3);
+
+
         TaskType[] types = {DRAWING,SPEAKING,PANTOMIME};
         return types[rand];
     }

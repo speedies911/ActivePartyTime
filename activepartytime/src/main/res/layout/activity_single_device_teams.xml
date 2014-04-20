@@ -55,6 +55,7 @@
 
         <ImageView
             android:src="@color/Blue"
+            android:id="@+id/team1Color"
             style="@style/styleTeamsColor"
             />
     </LinearLayout>
@@ -78,6 +79,7 @@
 
         <ImageView
             android:src="@color/Yellow"
+            android:id="@+id/team2Color"
             style="@style/styleTeamsColor"
             />
 
@@ -102,6 +104,7 @@
 
         <ImageView
             android:src="@color/Red"
+            android:id="@+id/team3Color"
             style="@style/styleTeamsColor"
             />
 
@@ -126,6 +129,7 @@
 
         <ImageView
             android:src="@color/DarkGreen"
+            android:id="@+id/team3Color"
             style="@style/styleTeamsColor"
         />
 

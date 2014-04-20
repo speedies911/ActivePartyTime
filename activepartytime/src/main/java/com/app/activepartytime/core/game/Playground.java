@@ -3,7 +3,7 @@ package com.app.activepartytime.core.game;
 import com.app.activepartytime.core.game.tasks.TaskType;
 
 /**
- * Created by Dave on 13.3.14.
+ * Created by Dave on 13.3.14. , Simo changes 2014 04 20
  */
 public class Playground {
 
@@ -21,7 +21,12 @@ public class Playground {
         }
     }
 
-    public TaskType getTask(int position) {
+
+    public TaskType getTaskType(int position) {
         return playground[position];
+    }
+
+    public int getPlaygroundLength() {
+        return playgroundLength;
     }
 }

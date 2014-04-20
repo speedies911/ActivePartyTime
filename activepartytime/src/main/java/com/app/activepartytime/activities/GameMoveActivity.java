@@ -50,6 +50,7 @@ public class GameMoveActivity extends FragmentActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +100,15 @@ public class GameMoveActivity extends FragmentActivity {
 
         game = new Game(LENGTH, teams);
 
+        Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
+        teams = new Team[tmp.length];
+
+
+        for (int i = 0; i < tmp.length; i++) {
+            teams[i] = (Team)tmp[i];
+        }
+
+        game = new Game(LENGTH, teams);
     }
 
     @Override
@@ -124,7 +134,7 @@ public class GameMoveActivity extends FragmentActivity {
                     fragment = new GameInfoFragment();
                     break;
                 case 1:
-                    fragment = new GamePlaygroundFragment();
+                    fragment = new GamePlaygroundFragment(game.getPlayground(),teams);
                     break;
             }
             return fragment;
@@ -166,25 +176,25 @@ public class GameMoveActivity extends FragmentActivity {
     }
 
 
-//tabListener 2014 04 17
+    //tabListener 2014 04 17
     public class SimoTabListener implements ActionBar.TabListener {
 
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        mPager.setCurrentItem(tab.getPosition());
+        public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+            mPager.setCurrentItem(tab.getPosition());
+        }
+
+        public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+            // hide the given tab
+        }
+
+        public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+            // probably ignore this event
+        }
+
+
+
+
     }
-
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-        // hide the given tab
-    }
-
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-        // probably ignore this event
-    }
-
-
-
-
-}
 
 
 
