@@ -2,17 +2,21 @@ package com.app.activepartytime.activities.fragments;
 
 
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.core.data.tasks.TaskDB;
 import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
 
 
@@ -25,7 +29,26 @@ public class GameInfoFragment extends Fragment {
     private Button generateButton;
     private LinearLayout taskInformation;
 
+    private TaskDatabaseHandler database;
+    private TaskDB currentTask;
 
+    private int side;
+
+    private ImageButton tick;
+    private ImageButton cross;
+
+    private Button startStopButton;
+    private Button card;
+
+    private static final long MAX_TIME_IN_MS = 20 * 1000;//2 * 60 * 1000;
+    private static final long COUNTDOWN_INTERVAL_IN_MS = 1000;
+
+    private CountDownTimer timer;
+    private TextView timerDisplay;
+    private boolean timerIsRunning;
+    private long timePause;
+
+    private View view1;
 
     public GameInfoFragment() {
         // Required empty public constructor
@@ -37,27 +60,154 @@ public class GameInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_game_info, container, false);
+        side = 0;
+        database = new TaskDatabaseHandler(getActivity());
+        currentTask = null;
 
-        generateButton = (Button)v.findViewById(R.id.generateButton);
+        view1 = inflater.inflate(R.layout.fragment_game_info, container, false);
 
-        taskInformation = (LinearLayout)v.findViewById(R.id.taskInformation);
+        tick = (ImageButton) view1.findViewById(R.id.tickButton);
+        cross = (ImageButton) view1.findViewById(R.id.crossButton);
 
+
+        generateButton = (Button) view1.findViewById(R.id.generateButton);
+        generateButton.setClickable(true);
+        startStopButton = (Button) view1.findViewById(R.id.startStopButton);
+        card = (Button) view1.findViewById(R.id.taskCard);
 
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("JO");
+
                 generateButton.setVisibility(RelativeLayout.GONE);
                 generateButton.setEnabled(false);
-                taskInformation.setVisibility(RelativeLayout.VISIBLE);
+                card.setVisibility(RelativeLayout.VISIBLE);
+                view1.findViewById(R.id.stopWatch).setVisibility(RelativeLayout.VISIBLE);
+                view1.findViewById(R.id.startStopButton).setVisibility(RelativeLayout.VISIBLE);
 
+                currentTask = database.getRandomTask();
+
+                card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
+                card.setEnabled(true);
+                timeInit(MAX_TIME_IN_MS);
+            }
+        });
+
+
+        startStopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startStopFunc();
+            }
+        });
+
+
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flipCard();
             }
         });
 
         return inflater.inflate(R.layout.fragment_game_info, container, false);
     }
 
+    private void startStopFunc () {
+        tick.setVisibility(RelativeLayout.VISIBLE);
+        cross.setVisibility(RelativeLayout.VISIBLE);
+        if (timerIsRunning) {
+            timer.cancel();
+            timerIsRunning = false;
+        } else {
+            timer = new CountDownTimer(timePause, COUNTDOWN_INTERVAL_IN_MS) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    StringBuffer time = new StringBuffer();
+                    int milTime = (int) millisUntilFinished / 1000;
+                    time.append('0');
+                    int minutes = (int)milTime/60;
+                    time.append(minutes);
+                    time.append(':');
+                    int seconds = milTime - 60*minutes;
+                    if (seconds < 10){
+                        time.append('0');
+                    }
+                    time.append(milTime - 60*minutes);
+                    if(seconds == 0){
+                        time.append('0');
+                    }
+                    timerDisplay.setText(time.toString());
+                    timePause = millisUntilFinished;
 
+                }
+
+                @Override
+                public void onFinish() {
+                    timerDisplay.setText("END !!!");
+                }
+            }.start();
+            timerIsRunning = true;
+        }
+    }
+
+    private void timeInit(long maxTime){
+
+        startStopButton = (Button)view1.findViewById(R.id.startStopButton);
+        timerDisplay = (TextView)view1.findViewById(R.id.stopWatch);
+        timePause = maxTime;
+        /*
+        show time before countdown starts
+         */
+        StringBuffer time = new StringBuffer();
+        int milTime = (int) maxTime / 1000;
+        time.append('0');
+        int minutes = (int)milTime/60;
+        time.append(minutes);
+        time.append(':');
+        int seconds = milTime - 60*minutes;
+        time.append(milTime - 60*minutes);
+        if (seconds == 0){
+            time.append('0');
+        }
+        timerDisplay.setText(time.toString());
+
+        timerIsRunning = false;
+
+    }
+
+    public void generateFunction(){
+
+        System.out.println("JO");
+
+        generateButton.setVisibility(RelativeLayout.GONE);
+        generateButton.setEnabled(false);
+        card.setVisibility(RelativeLayout.VISIBLE);
+        view1.findViewById(R.id.stopWatch).setVisibility(RelativeLayout.VISIBLE);
+        view1.findViewById(R.id.startStopButton).setVisibility(RelativeLayout.VISIBLE);
+
+        currentTask = database.getRandomTask();
+
+        card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
+        card.setEnabled(true);
+        timeInit(MAX_TIME_IN_MS);
+
+    }
+
+    public void flipCard(){
+        if(side == 0){
+            card.setBackgroundColor(Color.MAGENTA);
+            card.setText("Zobrazit zadani");
+            card.setTextColor(Color.CYAN);
+            side = 1;
+        } else {
+            card.setBackgroundColor(Color.BLUE);
+            card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
+            card.setTextColor(Color.YELLOW);
+            side = 0;
+        }
+
+    }
 
 
 }

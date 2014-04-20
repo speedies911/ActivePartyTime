@@ -1,25 +1,27 @@
 package com.app.activepartytime.core.game;
 
+import com.app.activepartytime.core.game.tasks.TaskType;
+
 /**
  * Created by Dave on 13.3.14.
  */
 public class Playground {
 
-    private Task[] playground;
+    private TaskType[] playground;
     private int playgroundLength;
 
     public Playground(int playgroundLength) {
         this.playgroundLength = playgroundLength;
-        this.playground = new Task[playgroundLength];
+        this.playground = new TaskType[playgroundLength];
     }
 
     public void generateTasks() {
         for (int i = 0; i < playgroundLength; i++) {
-            playground[i] = Task.getRandomTask();
+            playground[i] = TaskType.getRandomType();
         }
     }
 
-    public Task getTask(int position) {
+    public TaskType getTask(int position) {
         return playground[position];
     }
 }

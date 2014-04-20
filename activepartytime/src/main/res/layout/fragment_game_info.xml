@@ -38,7 +38,7 @@
             android:layout_alignParentStart="false"
             android:minWidth="200dp"
             android:minHeight="200dp"
-            android:onClick="generateFunction"/>
+            />
 
         <Button
             android:layout_width="wrap_content"
@@ -49,7 +49,6 @@
             android:layout_centerHorizontal="true"
             android:minWidth="200dp"
             android:minHeight="200dp"
-            android:onClick="flipCard"
             android:visibility="gone" />
 
 
@@ -59,7 +58,6 @@
             android:layout_height="wrap_content"
             android:text="START/PAUSE"
             android:id="@+id/startStopButton"
-            android:onClick="startStop"
             android:layout_below="@+id/taskCard"
             android:layout_marginLeft="@dimen/activity_time_button_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -81,6 +79,28 @@
             android:textSize="30dp"
             android:textIsSelectable="false"
             android:gravity="center" />
+
+        <ImageButton
+
+            android:id="@+id/crossButton"
+            android:background="@drawable/cross"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:visibility="gone"
+            />
+
+        <ImageButton
+            android:id="@+id/tickButton"
+            android:background="@drawable/tick"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="200dp"
+            android:layout_alignParentLeft="@+id/crossButton"
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

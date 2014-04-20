@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,18 +40,15 @@ public class GameMoveActivity extends FragmentActivity {
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
-    private TaskDatabaseHandler database;
-
-    private int side;
-    private Button card;
-
-    private TaskDB currentTask;
     private Team currentTeam;
     private Team[] teams;
 
     private Game game;
 
     public static final int LENGTH = 30;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,11 +89,6 @@ public class GameMoveActivity extends FragmentActivity {
         actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
 
 
-        database = new TaskDatabaseHandler(this);
-
-        side = 0;
-        currentTask = null;
-
         Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
         teams = new Team[tmp.length];
 
@@ -105,6 +98,7 @@ public class GameMoveActivity extends FragmentActivity {
         }
 
         game = new Game(LENGTH, teams);
+
     }
 
     @Override
@@ -141,115 +135,6 @@ public class GameMoveActivity extends FragmentActivity {
             return NUM_PAGES;
         }
     }
-
-    public void generateFunction(View view){
-        Button generate = (Button)findViewById(R.id.generateButton);
-        card = (Button)findViewById(R.id.taskCard);
-
-        generate.setVisibility(RelativeLayout.GONE);
-        generate.setEnabled(false);
-        card.setVisibility(RelativeLayout.VISIBLE);
-        findViewById(R.id.stopWatch).setVisibility(RelativeLayout.VISIBLE);
-        findViewById(R.id.startStopButton).setVisibility(RelativeLayout.VISIBLE);
-
-        currentTask = database.getRandomTask();
-
-        card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
-        card.setEnabled(true);
-        timeInit(MAX_TIME_IN_MS);
-
-    }
-
-    public void flipCard(View view){
-        if(side == 0){
-            card.setBackgroundColor(Color.MAGENTA);
-            card.setText("Zobrazit zadani");
-            card.setTextColor(Color.CYAN);
-            side = 1;
-        } else {
-            card.setBackgroundColor(Color.BLUE);
-            card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
-            card.setTextColor(Color.YELLOW);
-            side = 0;
-        }
-
-    }
-
-    /*
-    * Simo 2014 04 20 I have lost Petr's code that repairs time problem
-     */
-
-    private void timeInit(long maxTime){
-        startStopButton = (Button)findViewById(R.id.startStopButton);
-        timerDisplay = (TextView)findViewById(R.id.stopWatch);
-        timePause = maxTime;
-        /*
-        show time before countdown starts
-         */
-        StringBuffer time = new StringBuffer();
-        int milTime = (int) maxTime / 1000;
-        time.append('0');
-        int minutes = (int)milTime/60;
-        time.append(minutes);
-        time.append(':');
-        int seconds = milTime - 60*minutes;
-        time.append(milTime - 60*minutes);
-        if (seconds == 0){
-            time.append('0');
-        }
-        timerDisplay.setText(time.toString());
-
-        timerIsRunning = false;
-
-    }
-    /*
-    Petr Code 2014 04 17
-     */
-    private CountDownTimer timer;
-    private TextView timerDisplay;
-    private boolean timerIsRunning;
-    private long timePause;
-
-    private Button startStopButton;
-
-    private static final long MAX_TIME_IN_MS = 20 * 1000;//2 * 60 * 1000;
-    private static final long COUNTDOWN_INTERVAL_IN_MS = 1000;
-    public void startStop(View view) {
-        if (timerIsRunning) {
-            timer.cancel();
-            timerIsRunning = false;
-        } else {
-            timer = new CountDownTimer(timePause, COUNTDOWN_INTERVAL_IN_MS) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    StringBuffer time = new StringBuffer();
-                    int milTime = (int) millisUntilFinished / 1000;
-                    time.append('0');
-                    int minutes = (int)milTime/60;
-                    time.append(minutes);
-                    time.append(':');
-                    int seconds = milTime - 60*minutes;
-                    if (seconds < 10){
-                        time.append('0');
-                    }
-                    time.append(milTime - 60*minutes);
-                    if(seconds == 0){
-                        time.append('0');
-                    }
-                    timerDisplay.setText(time.toString());
-                    timePause = millisUntilFinished;
-
-                }
-
-                @Override
-                public void onFinish() {
-                    timerDisplay.setText("END !!!");
-                }
-            }.start();
-            timerIsRunning = true;
-        }
-    }
-
 
     /*
         Scroll settings list
