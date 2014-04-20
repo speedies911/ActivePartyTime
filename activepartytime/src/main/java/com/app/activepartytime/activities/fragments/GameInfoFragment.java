@@ -55,10 +55,10 @@ public class GameInfoFragment extends Fragment {
     private Game game;
     private GameMoveActivity activity;
 
-    public GameInfoFragment(Game game) {
+    public GameInfoFragment(Game game, GameMoveActivity gameMoveActivity) {
         // Required empty public constructor
         this.game = game;
-        this.activity = (GameMoveActivity)getActivity();
+        this.activity = gameMoveActivity;
     }
 
 
