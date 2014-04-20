@@ -80,10 +80,16 @@ public class StartPageActivity extends Activity {
         playDialog();
     }
 
-
+    Intent settingsIntent = null;
     public void settings(View view){
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
+        if(settingsIntent == null){
+            settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+        }else{
+            System.out.println("Jsou tam data");
+
+        }
+
     }
 
     public void oneDevice() {
