@@ -1,18 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<GridLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id = "@+id/cont"
+<TableLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:id="@+id/settingsContainer"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context="com.app.activepartytime.activities.SettingsActivity"
-    tools:ignore="MergeRootFrame"
+    android:background="#00741D"
     >
 
-    
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="time for task [s]"
+            android:id="@+id/timeForTaskLabel"
+            android:layout_column="1" />
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/timeForTaskInput"
+            android:layout_column="2" />
+    </TableRow>
 
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:minHeight="30dp">
 
-    </GridLayout>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:id="@+id/confirmButton"
+            android:layout_column="2"
+            android:onClick="confirmSettings"
+            />
+
+    </TableRow>
+
+</TableLayout>

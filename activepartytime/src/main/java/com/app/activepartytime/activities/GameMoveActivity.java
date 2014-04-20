@@ -1,27 +1,43 @@
 package com.app.activepartytime.activities;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.StartPageActivity;
 import com.app.activepartytime.activities.fragments.GameInfoFragment;
 import com.app.activepartytime.activities.fragments.GamePlaygroundFragment;
+
+import com.app.activepartytime.core.data.tasks.TaskDB;
+import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
+import com.app.activepartytime.core.game.SimoViewPager;
+
+import java.util.List;
+
 
 /**
  * Created by Dave on 8.4.14.
@@ -31,6 +47,13 @@ public class GameMoveActivity extends FragmentActivity {
     private static final int NUM_PAGES = 2;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
+
+    private TaskDatabaseHandler database;
+
+    private int side;
+    private Button card;
+
+    private TaskDB currentTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +65,7 @@ public class GameMoveActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+
         // Specify that tabs should be displayed in the action bar.
         ActionBar actionBar = getActionBar();
 
@@ -53,6 +77,7 @@ public class GameMoveActivity extends FragmentActivity {
 
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new SimoTabListener();
+
         mPager.setOnPageChangeListener(
                 new ViewPager.SimpleOnPageChangeListener() {
                     @Override
@@ -69,6 +94,10 @@ public class GameMoveActivity extends FragmentActivity {
         actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
 
 
+        database = new TaskDatabaseHandler(this);
+
+        side = 0;
+        currentTask = null;
 
     }
 
@@ -107,7 +136,6 @@ public class GameMoveActivity extends FragmentActivity {
         }
     }
 
-    Button card;
     public void generateFunction(View view){
         Button generate = (Button)findViewById(R.id.generateButton);
         card = (Button)findViewById(R.id.taskCard);
@@ -115,12 +143,16 @@ public class GameMoveActivity extends FragmentActivity {
         generate.setVisibility(RelativeLayout.GONE);
         generate.setEnabled(false);
         card.setVisibility(RelativeLayout.VISIBLE);
-        card.setText("Zadani");
+        findViewById(R.id.stopWatch).setVisibility(RelativeLayout.VISIBLE);
+        findViewById(R.id.startStopButton).setVisibility(RelativeLayout.VISIBLE);
+
+        currentTask = database.getRandomTask();
+
+        card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
         card.setEnabled(true);
+        timeInit(MAX_TIME_IN_MS);
 
     }
-
-    private int side = 0;
 
     public void flipCard(View view){
         if(side == 0){
@@ -128,12 +160,40 @@ public class GameMoveActivity extends FragmentActivity {
             card.setText("Zobrazit zadani");
             card.setTextColor(Color.CYAN);
             side = 1;
-        }else{
+        } else {
             card.setBackgroundColor(Color.BLUE);
-            card.setText("Zadani");
+            card.setText(currentTask.getName() + " (" + currentTask.getPoints() + ")");
             card.setTextColor(Color.YELLOW);
             side = 0;
         }
+
+    }
+
+    /*
+    * Simo 2014 04 20 I have lost Petr's code that repairs time problem
+     */
+
+    private void timeInit(long maxTime){
+        startStopButton = (Button)findViewById(R.id.startStopButton);
+        timerDisplay = (TextView)findViewById(R.id.stopWatch);
+        timePause = maxTime;
+        /*
+        show time before countdown starts
+         */
+        StringBuffer time = new StringBuffer();
+        int milTime = (int) maxTime / 1000;
+        time.append('0');
+        int minutes = (int)milTime/60;
+        time.append(minutes);
+        time.append(':');
+        int seconds = milTime - 60*minutes;
+        time.append(milTime - 60*minutes);
+        if (seconds == 0){
+            time.append('0');
+        }
+        timerDisplay.setText(time.toString());
+
+        timerIsRunning = false;
 
     }
     /*
@@ -142,27 +202,42 @@ public class GameMoveActivity extends FragmentActivity {
     private CountDownTimer timer;
     private TextView timerDisplay;
     private boolean timerIsRunning;
+    private long timePause;
 
     private Button startStopButton;
 
-    private static final long MAX_TIME_IN_MS = 2 * 60 * 1000;
+    private static final long MAX_TIME_IN_MS = 20 * 1000;//2 * 60 * 1000;
     private static final long COUNTDOWN_INTERVAL_IN_MS = 1000;
     public void startStop(View view) {
-        startStopButton = (Button)findViewById(R.id.startStopButton);
-        timerDisplay = (TextView)findViewById(R.id.stopWatch);
         if (timerIsRunning) {
             timer.cancel();
             timerIsRunning = false;
         } else {
-            timer = new CountDownTimer(MAX_TIME_IN_MS, COUNTDOWN_INTERVAL_IN_MS) {
+            timer = new CountDownTimer(timePause, COUNTDOWN_INTERVAL_IN_MS) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    timerDisplay.setText(millisUntilFinished / 1000 + "s");
+                    StringBuffer time = new StringBuffer();
+                    int milTime = (int) millisUntilFinished / 1000;
+                    time.append('0');
+                    int minutes = (int)milTime/60;
+                    time.append(minutes);
+                    time.append(':');
+                    int seconds = milTime - 60*minutes;
+                    if (seconds < 10){
+                        time.append('0');
+                    }
+                    time.append(milTime - 60*minutes);
+                    if(seconds == 0){
+                        time.append('0');
+                    }
+                    timerDisplay.setText(time.toString());
+                    timePause = millisUntilFinished;
+
                 }
 
                 @Override
                 public void onFinish() {
-                    timerDisplay.setText("TIME OUT !!!");
+                    timerDisplay.setText("END !!!");
                 }
             }.start();
             timerIsRunning = true;
@@ -219,5 +294,8 @@ public class GameMoveActivity extends FragmentActivity {
 
 
 }
+
+
+
 
 }

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         style="@style/startPageButton"
         android:text="@string/ButtonSettings"
-        android:onClick="test"
+        android:onClick="settings"
         android:layout_below="@+id/buttonStartPagePlay"
         android:layout_centerHorizontal="true" />
 
