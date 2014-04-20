@@ -31,8 +31,8 @@ public class GamePlaygroundFragment extends Fragment {
 
 
 
-    private static Playground playground;
-    private static Team[] teams;
+    private Playground playground;
+    private Team[] teams;
     private View v;
 
     public GamePlaygroundFragment(Playground p, Team[] t) {
@@ -185,7 +185,7 @@ public class GamePlaygroundFragment extends Fragment {
 
             layoutTeamList.addView(row);
         }
-        setActiveTeam(2);
+        setActiveTeam(0);
     }
 
 

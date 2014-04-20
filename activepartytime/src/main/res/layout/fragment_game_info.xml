@@ -1,16 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/content"
-    tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment"
-    android:fillViewport="false"
-    >
-
-    <RelativeLayout
+<RelativeLayout
         android:id="@+id/container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment"
         android:background="#00741d"
         tools:ignore="MergeRootFrame"
@@ -103,11 +96,8 @@
             android:layout_marginLeft="200dp"
             android:layout_alignParentLeft="@+id/crossButton"
             android:layout_height="100dp"
-
             android:layout_width="100dp"
             android:visibility="gone"/>
 
 
     </RelativeLayout>
-
-</LinearLayout>

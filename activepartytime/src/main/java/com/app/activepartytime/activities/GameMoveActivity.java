@@ -37,19 +37,16 @@ import com.app.activepartytime.core.game.Team;
 public class GameMoveActivity extends FragmentActivity {
 
     private static final int NUM_PAGES = 2;
-    private ViewPager mPager;
+    public ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
-    private Team currentTeam;
     private Team[] teams;
 
     private Game game;
 
     public static final int LENGTH = 30;
 
-
-
-
+    private GamePlaygroundFragment gamePlaygroundFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +63,6 @@ public class GameMoveActivity extends FragmentActivity {
         ActionBar actionBar = getActionBar();
 
         actionBar.setDisplayOptions(0);
-
 
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -99,16 +95,11 @@ public class GameMoveActivity extends FragmentActivity {
         }
 
         game = new Game(LENGTH, teams);
+        game.startGame();
+    }
 
-        Object[] tmp = (Object[])getIntent().getSerializableExtra("teamList");
-        teams = new Team[tmp.length];
-
-
-        for (int i = 0; i < tmp.length; i++) {
-            teams[i] = (Team)tmp[i];
-        }
-
-        game = new Game(LENGTH, teams);
+    public void update() {
+        gamePlaygroundFragment.updateState();
     }
 
     @Override
@@ -131,10 +122,11 @@ public class GameMoveActivity extends FragmentActivity {
             Fragment fragment = null;
             switch(position) {
                 case 0:
-                    fragment = new GameInfoFragment();
+                    fragment = new GameInfoFragment(game);
                     break;
                 case 1:
-                    fragment = new GamePlaygroundFragment(game.getPlayground(),teams);
+                    gamePlaygroundFragment = new GamePlaygroundFragment(game.getPlayground(),teams);
+                    fragment = gamePlaygroundFragment;
                     break;
             }
             return fragment;
