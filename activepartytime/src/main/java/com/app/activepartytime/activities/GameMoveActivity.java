@@ -103,7 +103,7 @@ public class GameMoveActivity extends FragmentActivity {
         // Add 2 tabs, specifying the tab's text and TabListener
 
         actionBar.addTab(actionBar.newTab().setText("Card").setTabListener(tabListener));
-        actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
+        actionBar.addTab(actionBar.newTab().setText("Playground").setTabListener(tabListener));
         game.startGame();
     }
 
