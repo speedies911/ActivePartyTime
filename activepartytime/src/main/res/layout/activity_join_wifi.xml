@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -6,17 +6,37 @@
     tools:context="com.app.activepartytime.activities.tabs.JoinWiFiActivity"
     tools:ignore="MergeRootFrame">
 
+    <TextView
+        android:text="Server IP:"
+        android:padding="15dip"
+        android:textSize="18dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textServerIP"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textIPaddress"
+        android:padding="15dip"
+        android:textSize="18dip"
+        android:text="IP PICO"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/buttonJoin"
+        android:layout_alignStart="@+id/buttonJoin" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scan"
-        android:onClick="scan"/>
+        android:id="@+id/buttonJoin"
+        android:text="Join Server"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/textIPaddress"
+        android:layout_centerHorizontal="true"
+        android:onClick="join"
+        />
 
-    <TextView
-        android:id="@+id/wifiJoinList"
-        android:padding="15dip"
-        android:textSize="18dip"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+</RelativeLayout>

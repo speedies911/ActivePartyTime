@@ -39,7 +39,10 @@ public class GamePlaygroundFragment extends Fragment {
     private int currentTeam;
     private ImageView[] figures;
     private TextView[] teamPositions;
+<<<<<<< HEAD
     private GameMoveActivity activity;
+=======
+>>>>>>> origin/TEST-COMMIT
 
     public GamePlaygroundFragment(Game g, GameMoveActivity ac) {
         // Required empty public constructor

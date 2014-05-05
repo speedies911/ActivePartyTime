@@ -22,14 +22,14 @@ public class Server {
     private String nickname;
     private boolean ready;
 
-    public Server(int numberOfPlayers, String nickname) {
+    public Server(int numberOfTeams, String nickname) {
         try {
             this.server = new ServerSocket(PORT);
         } catch (IOException e) {
             System.out.println("Port is not available.");
             System.exit(-1);
         }
-        this.numberOfTeams = numberOfPlayers;
+        this.numberOfTeams = numberOfTeams;
         this.teams = new ArrayList<Team>();
 
         this.nickname = nickname;

@@ -54,7 +54,10 @@ public class GameInfoFragment extends Fragment {
     private View view1;
     private Game game;
     private GameMoveActivity activity;
+<<<<<<< HEAD
     private TextView teamName;
+=======
+>>>>>>> origin/TEST-COMMIT
 
     public GameInfoFragment(Game game, GameMoveActivity gameMoveActivity) {
         // Required empty public constructor
@@ -112,6 +115,7 @@ public class GameInfoFragment extends Fragment {
                 success();
             }
         });
+<<<<<<< HEAD
 
         cross.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +123,8 @@ public class GameInfoFragment extends Fragment {
                 failed();
             }
         });
+=======
+>>>>>>> origin/TEST-COMMIT
 
         return view1;
     }
@@ -215,6 +221,7 @@ public class GameInfoFragment extends Fragment {
 
     }
 
+<<<<<<< HEAD
     private void success() {
         game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
         game.nextTeam();
@@ -230,6 +237,13 @@ public class GameInfoFragment extends Fragment {
         activity.updatePlaygroundFragment();
         createNewView();
 
+=======
+    public void success() {
+        game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
+        game.nextTeam();
+        activity.update();
+        createNewView();
+>>>>>>> origin/TEST-COMMIT
     }
 
     private void createNewView(){
@@ -242,6 +256,7 @@ public class GameInfoFragment extends Fragment {
         cross.setVisibility(View.GONE);
         timer.cancel();
         timeInit(MAX_TIME_IN_MS);
+<<<<<<< HEAD
         setCurrentTeam();
 
 
@@ -251,5 +266,10 @@ public class GameInfoFragment extends Fragment {
         teamName.setText(game.getCurrentTeam().getName());
 
     }
+=======
+
+    }
+
+>>>>>>> origin/TEST-COMMIT
 
 }
