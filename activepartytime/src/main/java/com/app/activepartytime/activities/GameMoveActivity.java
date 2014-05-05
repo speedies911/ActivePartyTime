@@ -103,6 +103,7 @@ public class GameMoveActivity extends FragmentActivity {
 
     public void update() {
         gamePlaygroundFragment.updateState();
+        mPager.setCurrentItem(1);
     }
 
     @Override
@@ -122,7 +123,6 @@ public class GameMoveActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Fragment fragment = null;
             if (position == 0) {
                 return gameInfoFragment;
             } else {

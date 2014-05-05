@@ -153,7 +153,6 @@ public class GameInfoFragment extends Fragment {
 
     private void timeInit(long maxTime){
 
-        startStopButton = (Button)view1.findViewById(R.id.startStopButton);
         timerDisplay = (TextView)view1.findViewById(R.id.stopWatch);
         timePause = maxTime;
         /*
@@ -209,8 +208,20 @@ public class GameInfoFragment extends Fragment {
     public void success() {
         game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
         game.nextTeam();
-        activity.mPager.setCurrentItem(1);
         activity.update();
+        createNewView();
+    }
+
+    private void createNewView(){
+        timerDisplay.setVisibility(View.GONE);
+        generateButton.setVisibility(View.VISIBLE);
+        generateButton.setEnabled(true);
+        card.setVisibility(View.GONE);
+        startStopButton.setVisibility(View.GONE);
+        tick.setVisibility(View.GONE);
+        cross.setVisibility(View.GONE);
+        timer.cancel();
+        timeInit(MAX_TIME_IN_MS);
 
     }
 

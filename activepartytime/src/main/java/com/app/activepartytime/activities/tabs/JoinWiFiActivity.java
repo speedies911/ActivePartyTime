@@ -8,27 +8,38 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.core.network.wifi.JoinTask;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class JoinWiFiActivity extends Activity {
 
-    TextView mainText;
+    EditText IPaddress;
     WifiManager mainWifi;
-    WifiReceiver receiverWifi;
-    List<ScanResult> wifiList;
-    StringBuilder sb = new StringBuilder();
+    private JoinTask joinTask;
+
+    private ObjectOutputStream oos;
+    private ObjectInputStream ois;
 
 
     @Override
@@ -36,12 +47,19 @@ public class JoinWiFiActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_wifi);
 
-        mainText = (TextView) findViewById(R.id.wifiJoinList);
+        IPaddress = (EditText) findViewById(R.id.textIPaddress);
         mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-        receiverWifi = new WifiReceiver();
-        registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
 
-        scanNetworks();
+        if(mainWifi.isWifiEnabled()) {
+            WifiInfo wifiInfo = mainWifi.getConnectionInfo();
+            int ip = wifiInfo.getIpAddress();
+            System.out.println("IP:" + ip);
+            String ipAddress = Formatter.formatIpAddress(ip);
+
+            IPaddress.setText(ipAddress);
+        } else {
+            IPaddress.setText("Nemas zaplou WiFi PICO");
+        }
 
         /*if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
@@ -50,15 +68,10 @@ public class JoinWiFiActivity extends Activity {
         }*/
     }
 
-    public void scan(View view) {
-        scanNetworks();
+    public void join(View view) {
+        joinTask = new JoinTask(IPaddress.getText().toString(), 5750);
+        joinTask.execute();
     }
-
-    private void scanNetworks() {
-        mainWifi.startScan();
-        mainText.setText("\\nScanning...\\n");
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -80,29 +93,19 @@ public class JoinWiFiActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void onPause() {
-        unregisterReceiver(receiverWifi);
-        super.onPause();
-    }
-
-    protected void onResume() {
-        registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
-        super.onResume();
-    }
-
-
-    class WifiReceiver extends BroadcastReceiver {
+    /*class WifiReceiver extends BroadcastReceiver {
         public void onReceive(Context c, Intent intent) {
             sb = new StringBuilder();
             wifiList = mainWifi.getScanResults();
             for(int i = 0; i < wifiList.size(); i++){
                 sb.append(new Integer(i+1).toString() + ".");
                 sb.append((wifiList.get(i)).toString());
-                sb.append("\\n");
+                sb.append("\\n\\n");
             }
-            mainText.setText(sb);
+            //mainText.setText(sb);
+            System.out.println(sb.toString());
         }
-    }
+    }*/
 
 
     /**
