@@ -153,8 +153,12 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(in));
 
-        try {
 
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.beginTransaction();
+
+
+        try{
             String line = bf.readLine();
           //  System.out.println(line);
             int row =0;
@@ -170,7 +174,16 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
                 int points = Integer.parseInt(st.nextToken().replaceAll(" ", ""));
 
                 TaskDB task = new TaskDB(name, points, taskType);
-                addTask(task);
+
+
+                    ContentValues values = new ContentValues();
+                    values.put(KEY_NAME, task.getName());
+                    values.put(KEY_POINTS, task.getPoints());
+                    values.put(KEY_TASKTYPE, task.getTaskTypeID());
+                    values.put(KEY_USED, 0);
+
+
+                    db.insert(TABLE_TASKS, null, values);
 
                 }catch (NumberFormatException e){
                     System.out.println("bad row " + row);
@@ -180,6 +193,8 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
         } catch (IOException e) {
             System.err.print("Database file access error!");
         }
+        db.setTransactionSuccessful();
+        db.endTransaction();
     }
 
     public TaskDB getRandomTask() {

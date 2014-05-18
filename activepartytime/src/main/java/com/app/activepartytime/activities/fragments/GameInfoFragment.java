@@ -325,7 +325,7 @@ public class GameInfoFragment extends Fragment {
             taskLayout.addView(taskFinalHelpText);
 
             for (int i=0; i < finalTasks.length; i++){
-                System.out.println("i: " + i);
+
                 ImageView taskImage = new ImageView(getActivity());
                 layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 if (i > 0){
