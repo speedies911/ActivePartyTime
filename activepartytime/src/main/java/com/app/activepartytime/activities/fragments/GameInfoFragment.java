@@ -2,6 +2,9 @@ package com.app.activepartytime.activities.fragments;
 
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.StartPageActivity;
 import com.app.activepartytime.activities.GameMoveActivity;
 import com.app.activepartytime.core.data.tasks.TaskDB;
 import com.app.activepartytime.core.data.tasks.TaskDatabaseHandler;
@@ -266,6 +270,7 @@ public class GameInfoFragment extends Fragment {
         game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
         game.nextTeam();
         if (finalState){
+            showWinner(game.getCurrentTeam().getName());
 
         }
 
@@ -443,4 +448,21 @@ public class GameInfoFragment extends Fragment {
 
     }
 
+
+    private void showWinner (String team) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("WINNER");
+        builder.setMessage("Team " + team + " won the game! Congratulations");
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // Handle Ok
+                Intent intent = new Intent(getActivity(), StartPageActivity.class); intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); startActivity(intent);
+
+            }
+        });
+        builder.create();
+        builder.show();
+
+    }
 }
