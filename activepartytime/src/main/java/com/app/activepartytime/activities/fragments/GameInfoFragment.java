@@ -268,12 +268,13 @@ public class GameInfoFragment extends Fragment {
 
     private void success() {
         game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
-        game.nextTeam();
+
         if (finalState){
             showWinner(game.getCurrentTeam().getName());
 
+        }else{
+            game.nextTeam();
         }
-
         activity.updatePlaygroundFragment();
         createNewView();
 

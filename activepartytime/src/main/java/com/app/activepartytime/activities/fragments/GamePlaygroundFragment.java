@@ -272,7 +272,14 @@ public class GamePlaygroundFragment extends Fragment {
         for (int i=0; i <teams.length; i++){
             ImageView image = figures[i];//(ImageView)v.findViewById("teamFigure".hashCode()+i);
             layoutParams = new RelativeLayout.LayoutParams(140, 200);
-            layoutParams.setMargins(24,0,24,0);
+            int marginLeft =0;
+            switch (i){
+                case 0: marginLeft = -15; break;
+                case 1: marginLeft = 15;break;
+                case 2: marginLeft = 45;break;
+                case 3: marginLeft = 60;break;
+            }
+            layoutParams.setMargins(marginLeft,0,24,0);
             layoutParams.addRule(RelativeLayout.RIGHT_OF, teams[i].getPlaygroundPosition());
             image.setLayoutParams(layoutParams);
             image.refreshDrawableState();

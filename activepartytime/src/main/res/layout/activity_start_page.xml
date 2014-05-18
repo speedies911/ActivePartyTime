@@ -7,13 +7,22 @@
     android:background="@drawable/start_page"
     >
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText1"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:id="@+id/buttonStartPagePlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/startPageButton"
         android:text="@string/ButtonPlay"
-        android:layout_marginTop="300dp"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="40dp"
         android:onClick="play"
         />
 
@@ -37,5 +46,7 @@
         android:layout_below="@+id/buttonStartPageSettings"
         android:layout_alignLeft="@+id/buttonStartPagePlay"
         android:layout_alignStart="@+id/buttonStartPagePlay" />
+
+
 
 </RelativeLayout>
