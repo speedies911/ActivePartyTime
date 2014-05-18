@@ -11,8 +11,8 @@ public class Playground {
     private int playgroundLength;
 
     public Playground(int playgroundLength) {
-        this.playgroundLength = playgroundLength;
-        this.playground = new TaskType[playgroundLength];
+        this.playgroundLength = 10;//playgroundLength+1;
+        this.playground = new TaskType[this.playgroundLength];
     }
 
     public void generateTasks() {

@@ -53,7 +53,7 @@ public class HostWiFiActivity extends Activity {
     }
 
     public void startHost(View view) {
-        server = new Server(2,"ACTIVITY JAK CIP");
+        server = new Server(2,"ACTIVITY JAK CIP", (Button) findViewById(R.id.buttonPICOposli));
         server.connectPlayers();
     }
 

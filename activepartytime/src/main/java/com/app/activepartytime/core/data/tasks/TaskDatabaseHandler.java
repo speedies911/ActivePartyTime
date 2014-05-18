@@ -5,8 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.nfc.FormatException;
 
 import com.app.activepartytime.R;
+import com.app.activepartytime.core.game.Task;
+import com.app.activepartytime.core.game.tasks.TaskType;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,6 +35,7 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     private static final String KEY_POINTS = "points";
     private static final String KEY_TASKTYPE = "tasktype";
+    private static final String KEY_USED = "used";
 
     private Context context;
 
@@ -46,7 +50,8 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
                 + KEY_NAME + " TEXT,"
                 + KEY_POINTS + " INTEGER,"
-                + KEY_TASKTYPE + " INTEGER)";
+                + KEY_TASKTYPE + " INTEGER,"
+                + KEY_USED + " INTEGER)";
         db.execSQL(CREATE_TASKS_TABLE);
     }
 
@@ -62,7 +67,9 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, task.getName());
         values.put(KEY_POINTS, task.getPoints());
-        values.put(KEY_TASKTYPE, task.getTaskType());
+        values.put(KEY_TASKTYPE, task.getTaskTypeID());
+        values.put(KEY_USED, 0);
+
 
         db.insert(TABLE_TASKS, null, values);
         db.close();
@@ -108,14 +115,19 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
     }
 
     public int getTasksCount() {
-        String countQuery = "SELECT * FROM " + TABLE_TASKS;
+        String countQuery = "SELECT count(*) FROM " + TABLE_TASKS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
-        int taskCount = cursor.getCount();
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        int taskCount = cursor.getInt(0);
         cursor.close();
 
         return taskCount;
     }
+
+
 
     public int updateTaskDB(TaskDB task) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -123,7 +135,7 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, task.getName());
         values.put(KEY_POINTS, task.getPoints());
-        values.put(KEY_TASKTYPE, task.getTaskType());
+        values.put(KEY_TASKTYPE, task.getTaskTypeID());
 
         return db.update(TABLE_TASKS, values, KEY_ID + " = ?",
                 new String[] {String.valueOf(task.getID())});
@@ -144,16 +156,25 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
         try {
 
             String line = bf.readLine();
+          //  System.out.println(line);
+            int row =0;
             StringTokenizer st;
             while (line != null) {
-                st = new StringTokenizer(line,"-");
-                int taskType = Integer.parseInt(st.nextToken());
+                row++;
+                try {
+
+
+                st = new StringTokenizer(line,"*");
+                int taskType = Integer.parseInt(st.nextToken().replaceAll(" ",""));
                 String name = st.nextToken();
-                int points = Integer.parseInt(st.nextToken());
+                int points = Integer.parseInt(st.nextToken().replaceAll(" ", ""));
 
                 TaskDB task = new TaskDB(name, points, taskType);
                 addTask(task);
 
+                }catch (NumberFormatException e){
+                    System.out.println("bad row " + row);
+                }
                 line = bf.readLine();
             }
         } catch (IOException e) {
@@ -168,4 +189,104 @@ public class TaskDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    public TaskDB getTask(TaskType taskType, int points, boolean used) {
+
+        int finalPoints = (int)(Math.random() * 7 + 1);//numbers: 1 2 3 4 5 6 7  - I hope :-)
+        finalPoints = (finalPoints % 4)+3 -1;
+        if (finalPoints == 2){//task for all
+            finalPoints = 6;
+
+        }else{
+            if (points != -1){//points were selected by player
+
+                finalPoints = points;
+            }
+
+        }
+
+        String countQuery = "SELECT * FROM " + TABLE_TASKS + " where " + KEY_TASKTYPE +"=" + taskType.getTypeID();
+        if (points != -1){
+            countQuery += "AND " + KEY_POINTS + "=" + finalPoints;
+
+        }
+        if (used){
+            countQuery += "AND " + KEY_USED + "=" + used;
+        }
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        int count = cursor.getCount();
+        int id = (int)(Math.random() * count );
+
+        cursor.moveToPosition(id);
+        TaskDB task = new TaskDB(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1),
+                Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)));
+        cursor.close();
+
+        return task;
+    }
+
+    public TaskDB[] getFinalTasks(){
+        TaskDB [] tasks = new TaskDB[6];
+
+        /*
+        drawing
+         */
+
+        String query = "SELECT * FROM " + TABLE_TASKS + " where " + KEY_TASKTYPE +"=" + TaskType.DRAWING.getTypeID();
+        TaskDB[] twoTasks = getTwoTasks(query);
+        tasks[0] = twoTasks[0];
+        tasks[3] = twoTasks[1];
+
+
+        /*
+        speaking
+         */
+        query = "SELECT * FROM " + TABLE_TASKS + " where " + KEY_TASKTYPE +"=" + TaskType.SPEAKING.getTypeID();
+        twoTasks = getTwoTasks(query);
+        tasks[1] = twoTasks[0];
+        tasks[4] = twoTasks[1];
+
+        /*
+        pantomime
+         */
+        query = "SELECT * FROM " + TABLE_TASKS + " where " + KEY_TASKTYPE +"=" + TaskType.PANTOMIME.getTypeID();
+        twoTasks = getTwoTasks(query);
+        tasks[2] = twoTasks[0];
+        tasks[5] = twoTasks[1];
+
+        return tasks;
+    }
+
+    private TaskDB[] getTwoTasks(String query){
+        TaskDB[] tasks = new TaskDB[2];
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        int count = cursor.getCount();
+        int id = (int)(Math.random() * count );
+        int id2 = (int)(Math.random() * count );
+        while(id == id2){
+            id2 = (int)(Math.random() * count );
+        }
+        cursor.moveToPosition(id);
+        tasks[0] = new TaskDB(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1),
+                Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)));
+        cursor.moveToPosition(id2);
+        tasks[1] = new TaskDB(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1),
+                Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)));
+        cursor.close();
+        return tasks;
+    }
 }

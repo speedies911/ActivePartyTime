@@ -34,9 +34,41 @@
         android:id="@+id/buttonJoin"
         android:text="Join Server"
         android:layout_marginTop="40dp"
-        android:layout_below="@+id/textIPaddress"
+        android:layout_below="@+id/joinTeamNameName"
         android:layout_centerHorizontal="true"
         android:onClick="join"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Name: "
+        android:id="@+id/joinTeamNameHeader"
+        android:textSize="18dip"
+        android:padding="15dip"
+        android:layout_below="@+id/textServerIP"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Name"
+        android:padding="15dip"
+        android:textSize="18dip"
+        android:id="@+id/joinTeamNameName"
+        android:layout_below="@+id/textIPaddress"
+        android:layout_alignLeft="@+id/textIPaddress"
+        android:layout_alignStart="@+id/textIPaddress" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POSLI PICO"
+        android:id="@+id/buttonPICOposliJoin"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/buttonJoin"
+        android:layout_alignEnd="@+id/buttonJoin"
         />
 
 </RelativeLayout>

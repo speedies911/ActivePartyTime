@@ -1,7 +1,1301 @@
-1-Window-5
-3-Teacher-4
-1-Glasses-4
-2-Government-3
-2-Foot-3
-3-Dog-4
-2-More word task-6
+﻿0*Dálnice*3
+1*Stesk po domově*3
+2*Tlakový hrnec*3
+0*Čtyřúhelník*6
+1*Deštivý den*3
+2*Vlnobití*3
+0*Digitální hodinky*3
+1*Zákaz vycházení*3
+2*Pokuta*3
+0*Minisukně*3
+1*Spáč*6
+2*Holicí strojek*3
+0*Balkón*3
+1*Horkovzdušná trouba*3
+2*Akční cena*3
+0*Natáčka*6
+1*Chov dobytka*3
+2*Smeč*3
+0*Hřbitov*3
+1*Řetězová reakce*6
+2*Pultový prodej*3
+0*Strašák*3
+1*Zvukový nosič*3
+2*Stopky*3
+0*Vačnatec*3
+1*Pendolíno*3
+2*Golfový míček*3
+0*Větroň*3
+1*Věrnostní sleva*3
+2*Hydraulický vrták*6
+0*Stéblo trávy*3
+1*Dvojité balení*3
+2*Dávivý kašel*3
+0*Satelit*3
+1*Čekací listina*3
+2*Nafukovací balón*6
+0*Ježibaba*3
+1*Obchodní cesta*3
+2*Mluvící panenka*6
+0*Mýdlová bublina*3
+1*Pokojská*3
+2*Držet na uzdě*3
+0*Farma*3
+1*Odmlka*3
+2*Bezvětří*3
+0*Tenisové hřiště*3
+1*Hlasivky*3
+2*Pejsek*6
+0*Třešeň*3
+1*Transplantace vlasů*3
+2*Polévková zavářka*6
+0*Šňůra na prádlo*3
+1*Kočovný cirkus*3
+2*Samoobsluha*3
+0*Přikrývka*3
+1*Kuchtík*3
+2*Sraz*3
+0*Čelní sklo*3
+1*Předsudek*6
+2*Vodní dýmka*3
+0*Plotna*3
+1*Minerální voda*3
+2*Vteřina hrůzy*3
+0*Plachetnice*3
+1*Plísňový sýr*6
+2*Zápalka*3
+0*Násada na koště*3
+1*Množstevní sleva*3
+2*Pusa na dobrou noc*3
+0*Prasklé potrubí*6
+1*Pískot*3
+2*Nástěnná malba*3
+0*Horská dráha*3
+1*Stav účtu*3
+2*Kukátko*3
+0*Jezdecké holínky*3
+1*Novinový papír*3
+2*Škytavka*6
+0*Sprchový kout*3
+1*Dynamo*3
+2*Dřevorubec*3
+0*Potápěčské ploutve*3
+1*Přezdívka*3
+2*Tenisový loket*6
+0*Lampionový průvod*3
+1*Vzdušný most*3
+2*Banánek v čokoládě*6
+0*Šachovnice*3
+1*Noemova archa*3
+2*Žlučníkový záchvat*3
+0*Osada*3
+1*Očitý svědek*3
+2*Ženské hnutí*3
+0*Perlový náhrdelník*3
+1*Tavený sýr*3
+2*Klíč do zapalování*6
+0*Stetoskop*3
+1*Bledá tvář*3
+2*Dvojitá brada*3
+0*Čertovo kopýtko*3
+1*Ovocný salát*3
+2*Skákání přes švihadlo*6
+0*Prase domácí*3
+1*Vnitrozemí*3
+2*Vrtačka*3
+0*Roura*3
+1*Letní čas*3
+2*Slámka*6
+0*Doble-decker*3
+1*Comeback*3
+2*Tužka na obočí*3
+0*Plochá noha*6
+1*Zavírací den*3
+2*Vlasec*3
+0*Poštovní schránka*3
+1*Databanka*3
+2*Houslista*3
+0*Slepá ulice*3
+1*Sardelová pasta*6
+2*Ohřívací láhev*3
+0*Zahradní altán*3
+1*Ledový čaj*3
+2*Pravopisná chyba*3
+0*Klíčová dírka*3
+1*Soutěž o ceny*6
+2*Stopař*3
+0*Ochlupení na prsou*6
+1*Prázdninová brigáda*3
+2*Hadí jed*3
+0*Čajová konvice*3
+1*Svátek práce*3
+2*Modlitba*3
+0*Nehet*3
+1*Žlučový kámen*3
+2*Obsluha čerpací stanice*6
+0*Tričko*3
+1*Rentgenolog*3
+2*Solárium*3
+0*Kotevní řetěz*3
+1*Výpadek paměti*6
+2*Vakuové balení*3
+0*Náramkové hodinky*3
+1*Pašované zboží*3
+2*Párátko*3
+0*Kalhotová sukně*3
+1*Trvanlivé mléko*3
+2*Plná rychlost*6
+0*Semafor*3
+1*Cukrovka*3
+2*Anonym*3
+0*Kalíšek na vejce*3
+1*IQ test*3
+2*Uvolněný kontakt*6
+0*Páteř*3
+1*Zubní plak*3
+2*Novinář*3
+0*Chodidlo*6
+1*Roční období*3
+2*Jídelní lístek*3
+0*Noha u stolu*3
+1*Vodní příkop*3
+2*Popelník*3
+0*Pleš*3
+1*Pearcing*3
+2*Cibulová polévka*6
+0*Návěstí*3
+1*Prémie*3
+2*Houpací křeslo*3
+0*Jablečný závin*3
+1*Světelná reklama*3
+2*Slabina*3
+0*Pokojová rostlina*3
+1*Rajčatový salát*3
+2*Telefonní budka*6
+0*Elektrická kytara*3
+1*Ztracený syn*3
+2*Chroust*3
+0*Čelenka*3
+1*Přístaviště*6
+2*Kolíček na prádlo*3
+0*Zvonice*3
+1*Skládka*3
+2*Popelářské auto*6
+0*Zoologická zahrada*3
+1*Krasopisné písmo*3
+2*Prášek na spaní*3
+0*Krabice na klobouk*3
+1*Kobylka*3
+2*Upomínka*3
+0*Stopka*3
+1*Pyžamová párty*6
+2*Polévková lžíce*3
+0*Včelí královna*3
+1*Podkreslovací hudba*6
+2*Kávový filtr*3
+0*Botel*3
+1*Noční slepota*3
+2*Pijácká píseň*3
+0*Dužina*3
+1*Generální stávka*3
+2*Horkokrevný člověk*3
+0*Vodotrysk*3
+1*Multimilionář*3
+2*Hodinové ručičky*6
+0*Dětský koutek*3
+1*Balzám na vlasy*3
+2*Pásovec*6
+0*Eskalátor*3
+1*Ozónová díra*3
+2*Zmizík*3
+0*Včelí roj*3
+1*Charita*3
+2*Nenasyta*6
+0*Sedlo*3
+1*Hledání partnera*3
+2*Stříkací pistole*3
+0*Náramek*3
+1*Výhružný dopis*6
+2*Čínské hůlky*3
+0*Želva*3
+1*Početní chyba*3
+2*Taktovka*3
+0*Dětská postýlka*6
+1*Žluté stránky*3
+2*Drive-in restaurace*3
+0*Rozparek*3
+1*Náhrada škody*3
+2*Čajový sáček*3
+0*Etiketa*3
+1*Primář*3
+2*Počítačový virus*6
+0*Larva*3
+1*Diář*3
+2*Vysavač*3
+0*Hrdlo láhve*3
+1*Armáda spásy*3
+2*Podmáslí*6
+0*Spodní čelist*3
+1*Plná penze*3
+2*Deštník*3
+0*Nůž na chléb*3
+1*Ananas*3
+2*Oční kapky*3
+0*Výstražná signalizace*3
+1*Sirotek*3
+2*Saxana*6
+0*Modlitební knížka*3
+1*Zácpa*6
+2*Vzdušná vzdálenost*3
+0*Zubní korunka*3
+1*Kamelot*3
+2*Klaustrofobie*3
+0*Kapitánská páska*3
+1*Rybí moučka*3
+2*Tvrdký oříšek*3
+0*Střízlík*3
+1*Videoklip*3
+2*Nudlová polévka*6
+0*Televizní anténa*3
+1*Velikost obuvi*3
+2*Vrtule*3
+0*Nákupní taška*6
+1*TRopické vedro*3
+2*Kuličkové pero*3
+0*Horský potok*3
+1*Ojeté auto*3
+2*Křída*6
+0*Bazén*3
+1*Pomíjivost*3
+2*Kotoučková pila*3
+0*Kladka*6
+1*Kostelní hudba*3
+2*Křeč lýtka*3
+0*Zásuvka*3
+1*Látkový uborousek*3
+2*Pochodová hudba*3
+0*Rozvětvení*3
+1*Pohádkový princ*6
+2*Nízký tlak*3
+0*Tažný pes*3
+1*Cestovní kancelář*3
+2*Vypínač*3
+0*Bouřkový mrak*3
+1*Mléčná rýže*6
+2*Ukazováček*3
+0*Sešívačka*3
+1*Tragedie*3
+2*Žvýkačka*3
+0*Památník*3
+1*Tropické léto*3
+2*Vražda*6
+0*Číselná tabule*3
+1*Poštovní přihrádka*3
+2*Praní špinavých peněz*3
+0*Páska na oko*3
+1*Účetní*3
+2*Parkovací lístek*3
+0*Měsíční kráter*3
+1*Lov velryb*3
+2*Dvojité kliknutí myší*6
+0*Lešení*3
+1*Plstěný klobouk*3
+2*Bramborová polévka*3
+0*Olejová skvrna*6
+1*Krkavčí matka*3
+2*Bublinková lázeň*3
+0*Knoflíková dírka*6
+1*Outsider*3
+2*Žrout*3
+0*Rtěnka*3
+1*Pohotovost*3
+2*Přehazovačka*3
+0*Fotbal*3
+1*Navazující let*6
+2*Vzpěrač*3
+0*Dlaň*3
+1*Pasová fotografie*3
+2*Kšandy*3
+0*Svatozář*6
+1*Víkend*3
+2*Vývrtka*3
+0*Basa na pivo*3
+1*Medík*3
+2*Sluchátka*3
+0*Domácí lékař*3
+1*Dohled*6
+2*Deodorant*3
+0*Létací dveře*3
+1*Hrubá stavba*3
+2*Krejčovský metr*3
+0*Oční koutek*3
+1*Mírový pochod*3
+2*Autopilot*3
+0*Koruna stromu*3
+1*Strážný anděl*6
+2*Oční stíny*3
+0*Kořeny stromu*3
+1*Hřebíček*3
+2*Sblížení*6
+0*Poznámka pod čarou*3
+1*Píchačky*3
+2*Lednička*3
+0*Muchomůrka*3
+1*Klimatizace*3
+2*Zapalovač*3
+0*Skládací židle*6
+1*Termální lázně*3
+2*Brýle na čtení*3
+0*Rozkládací stůl*3
+1*Měsíční cyklus*3
+2*Ruční brzda*3
+0*Táborák*3
+1*Smrtelný hřích*3
+2*Ranní gymnastika*6
+0*Mrazící box*3
+1*Hovnivál*3
+2*Skrblík*6
+0*Sprchový závěs*3
+1*Lidová píseň*3
+2*Náušnice*3
+0*Lodní okno*3
+1*Mozeček*3
+2*Klavírní večer*3
+0*Plíce*6
+1*Citrusový plod*3
+2*Pohlednice*3
+0*Žerď*3
+1*Ochotník*3
+2*Ústní voda*3
+0*Slunéčko sedmitečné*6
+1*Obydlené území*3
+2*Šicí stroj*3
+0*Kancelářská svorka*6
+1*Zlodějská hantýrka*3
+2*Elvis Presley*3
+0*Nosní dírka*3
+1*Neviňátko*3
+2*Kolečkové brusle*3
+0*Vlasy*3
+1*Mistrovské dílo*3
+2*Brzdový pedál*3
+0*Maják*3
+1*Příměří*3
+2*Rozlité mléko*6
+0*Úložný prostor*3
+1*Užitkové zvíře*3
+2*Hod kladivem*3
+0*Kruhový objezd*6
+1*Ceremoniář*3
+2*Lupa*3
+0*Koupací čepice*3
+1*Prase na výkrm*6 
+2*Korunovační klenoty*3
+0*Topné těleso*3
+1*Módní šperk*3
+2*Ostří nože*3
+0*Lesní roh*3
+1*Auto z půjčovny*3
+2*Odstředěné mléko*3
+0*Kondolence*3
+1*Bílá rýže*3
+2*Louskáček*6
+0*Řetízek na nohu*3
+1*Lichotka*3
+2*Studená válka*3
+0*Automyčka*6
+1*Předávání Oskarů*3
+2*Záložka v knize*3
+0*Kraťasy*3
+1*Jackpot*3
+2*Popcorn*6
+0*Jednorožec*3
+1*Komín*3
+2*Výměna pneumatiky*3
+0*Láhev s jedem*3
+1*Medový meloun*6
+2*Bolestné*3
+0*Terasa*3
+1*Šelma*3
+2*Bolení zubů*3
+0*Kontinent*3
+1*Dobropis*3
+2*Teplota vody*3
+0*Proutek*6
+1*Rallye*3
+2*Řezaná květina*3
+0*Zatáčka*3
+1*Cizí slovo*3
+2*Dítě ulice*3
+0*Náprstek*3
+1*Potápěčský skafandr*6
+2*Baterka*3
+0*Policejní pes*3
+1*Náhradní díl*3
+2*Opravna*3
+0*Motorová pila*6
+1*Informace o dopravě*3
+2*Jádřinec*3
+0*Slonice*3
+1*Sledovanost*3
+2*Průvan*6
+0*Kravský zvonec*3
+1*Ideální pár*3
+2*Zpětné zrcátko*3
+0*Házená*3
+1*Disktová jednotka*6
+2*Drobné*3
+0*Mořská panna*3
+1*Vzorný žák*3
+2*Rolák*3
+0*Čahoun*3
+1*Hladina cholesterolu*3
+2*Trvalé následky*3
+0*Marťan*6
+1*Mrholení*3
+2*Pasiáns*3
+0*Mravenčí stezka*6
+1*Zlomek*3
+2*Políbení ruky*3
+0*Horní ret*3
+1*Pouť*3
+2*Sedací koupel*3
+0*Hroch*6
+1*Horská túra*3
+2*Pumpička*3
+0*Padací most*3
+1*Velikonoční zajíc*3
+2*Kapsa*3
+0*Tažné lanko*3
+1*Sušené ovoce*3
+2*Nálezné*3
+0*Větrná korouhvička*3
+1*Velký pátek*3
+2*Nohy do O*6
+0*Pásový opar*6
+1*Vestavěná kuchyň*3
+2*Létající talíř*3
+0*Ptačí klec*3
+1*Moderátor kvízu*3
+2*Poker*3
+0*Párek v rohlíku*3
+1*Ležák*3
+2*Kropicí konev*3
+0*Schodiště*3
+1*Zloději*3
+2*Popelnice*3
+0*Klenotnice*6
+1*Golfský proud*3
+2*Spona do vlasů*3
+0*Padající hvězda*3
+1*Poslední slova*3
+2*Zip*3
+0*Polobotka*3
+1*Jasnovidec*6
+2*Lepidlo*3
+0*Přesýpací hodiny*3
+1*Molitan*3
+2*Stěrače*3
+0*Smyčec*3
+1*Malinová zmrzlina*6
+2*Adresář*3
+0*Kosmická loď*3
+1*Obleva*3
+2*Zub na klíči*3
+0*Orlí nos*3
+1*Maškarní bál*3
+2*Balet*6
+0*Ušní lalůček*3
+1*Ochrana životního prostředí*3
+2*Píchání v boku*3
+0*Jachta*3
+1*Perník*3
+2*Žehlička*3
+0*Nosorožec*6
+1*Hon*3
+2*Kapesné*3
+0*Hokejka*3
+1*Morous*3
+2*Zálohovaná láhev*3
+0*Kajak*6
+1*Vzteklina*3
+2*Pilník na nehty*3 
+0*Náhubek*3
+1*Zlatý déšť*3
+2*Akupunktura*6
+0*Špička nože*3
+1*Zpěvácká soutěž*3
+2*Plavání na znak*3
+0*Králíkárna*4
+1*Písemná stížnost*4
+2*Šatní mol*6
+0*Operační stůl*4
+1*Románový hrdina*4
+2*Silueta*4
+0*Jabloňový květ*4
+1*Chudák*4
+2*Župan*4
+0*Pupík*4
+1*Mořidlo*4
+2*Spolužák*6
+0*Paličák*4
+1*Vedení podniku*4
+2*Zajíc na divoko*6
+0*Výstražný trojúhelník*4
+1*Poznámka na okraj*4
+2*Příčná flétna*4
+0*Puklina*6
+1*Putika*4
+2*Žebrák*4
+0*Chmel*4
+1*Prašan*4
+2*Koktejl*4
+0*Ponorka*4
+1*Dráteník*4
+2*Katalog*4
+0*Teplo domova*6
+1*Orální očkování*4
+2*Hladina moře*4
+0*Samostříl*4
+1*Drahokam*4
+2*Šprt*4
+0*Dýmka*4
+1*Směnný obchod*4
+2*Nafukovací matrace*6
+0*Narozeninový dort*4
+1*Červený kříž*4
+2*Hladomor*4
+0*Proužkovaná ponožka*6
+1*Mutování*4
+2*Kydat hnůj*4
+0*Rybí trh*4
+1*Tajná policie*4
+2*Bulimie*6
+0*Klapky na očích*4
+1*Smolař*4
+2*Pláštěnka*4
+0*Kanál La Manche*4
+1*Pohostinské vystoupení*4 
+2*Rukojeť*4
+0*Nosítka*6
+1*Zátiší*4
+2*Kachlová pec*4
+0*Cement*6
+1*Výška letu*4
+2*Palečnice*4
+0*Stroužek česneku*4
+1*Konkurence*4
+2*Stojan na noty*4
+0*Mohyla*4
+1*Porodnice*4
+2*Lední hokej*4
+0*Listnatý strom*4
+1*Optický klam*6
+2*Otěže*4
+0*Suk*4
+1*Zatykač*4
+2*Nevybuchlá nálož*6
+0*Dinosaurus*4
+1*Hudební doprovod*4
+2*Petrklíč*4
+0*Protiatomový kryt*4
+1*Zdravý rozum*6
+2*Tukový polštář*4
+0*Nosní kost*4
+1*Zaujetí stanoviska*4
+2*Pijácký nos*4
+0*Gumovník*4
+1*Ponožka*4
+2*Zbohatlík*4
+0*Ropný sejk*6
+1*Mikrospánek*4
+2*Uzávěr nádrže*4
+0*Atomová elektrárna*4
+1*Zvýrazňovač*6
+2*Náplast*4
+0*Pancéřová pěst*4
+1*Prázdninová láska*4
+2*Hodinář*4
+0*Přístřešek*4
+1*Poločas rozpadu*4
+2*Náprsenka*4
+0*Radarová kontrola*6
+1*Dopravní tepna*4
+2*Walkman*4
+0*Námořník*4
+1*Povinné ručení*6
+2*Listonoš*4
+0*Polární kruh*4
+1*Podtitulek*4
+2*Vizitka*4
+0*Poloostrov*6
+1*Dívčí válka*4
+2*Čtyřlístek*4
+0*Salátová zálivka*4
+1*Limonáda*4
+2*Jurský park*4
+0*Víčko*4
+1*Šifra*4
+2*Reality show*6
+0*Ruské kolo*4
+1*Slamák*4
+2*Vlastenec*4
+0*Oční bulva*4
+1*Srdeční komora*4
+2*Žabí stehýnka*6
+0*Víko rakve*4
+1*Útočník*4
+2*Dláto*4
+0*Jeskynní člověk*6
+1*Drogový dealer*4
+2*Otáčecí židle*4
+0*Hranice*4
+1*Můž snů*4
+2*Krtek*4
+0*Potápěč*4
+1*Film s hvězdičkou*4
+2*Flirt*6
+0*Spodní prádlo*4
+1*Advent*4
+2*Chňapka*4
+0*Zadní spoiler*4
+1*Opravář kotlů*4
+2*Sbormistr*4
+0*Bagr*4
+1*Antikvariát*4
+2*Pálení žáhy*6
+0*Vnější dráha*4
+1*Dutina*4
+2*Vousáč*6
+0*Lanovka*4
+1*Ropucha*4
+2*Elektrický obvod*4
+0*Zlatý důl*4
+1*Ideální postava*4
+2*Špinavá práce*4
+0*Provazový žebřík*6
+1*Ochránce zvířat*4
+2*Plechovka*4
+0*Venkovní teplota*4
+1*Řechtačka*4
+2*Trojskok*6
+0*Telefonní seznam*4
+1*Společenské postavení*4
+2*Horní část těla*4
+0*Výhybka*4
+1*Francovka*4
+2*Čestné kolečko*4
+0*Pršák*6
+1*Dceřiná společnost*4
+2*Tah štetcem*4
+0*Větrák*4
+1*Družice*4
+2*Veš*6
+0*Termoska*4
+1*Tepelné čeradlo*4
+2*Dojnice*4
+0*Vrakoviště*6
+1*Domácí kino*4
+2*Husí kůže*4
+0*Tramvajový ostrůvek*4
+1*Teplotní rekord*4
+2*Uvaděč*4
+0*Autolékárnička*4
+1*Nemrznoucí směs*4
+2*Ruční mixér*4
+0*Plážový koš*4
+1*Vrstevník*6
+2*Lék proti bolesti*4
+0*Kadeřnický salón*4
+1*Výročí*4
+2*Záložník*4
+0*Jedle*4
+1*Víkendová příloha*4
+2*Pěna na holení*6
+0*Vysokozdvižný vozík*4
+1*Svobodný zednář*4
+2*Skupinová fotografie*4
+0*Špejle*4
+1*Bílá klobása*6
+2*Slzný plyn*4
+0*Automat na kávu*4
+1*Pokrok*4
+2*Autogramiáda*6
+0*Přepážka*4
+1*Daňový podvod*4
+2*Videokamera*4
+0*Přechod pro chodce*4
+1*Žlučník*4
+2*Podání ruky*4
+0*Čapí hnízdo*6
+1*Hlavice*4
+2*Snob*4
+0*Koryto potoka*4
+1*Šuškanda*4
+2*Muší váha*4
+0*Ubrus*4
+1*Štěrk*4
+2*Hluboký povzdech*6
+0*Horské pásmo*4
+1*Žloutenka*4
+2*Krmítko*6
+0*Myslivec*4
+1*Stihomam*4
+2*Oblek na míru*4
+0*Nádražní restaurace*6
+1*Maloobchod*4
+2*Nůž na dopisy*4
+0*Přehrada*4
+1*Destilovaná voda*4
+2*Parfém*4
+0*Bankomat*4
+1*Volební lístek*4
+2*Fanoušek*4
+0*Plnovous*4
+1*Elektřina*4
+2*Nápoj lásky*6
+0*Plesové šaty*4
+1*Bouda na spadnutí*4
+2*Prostná*4
+0*Trestanecký oděv*6
+1*Respektovaná osoba*4
+2*Ptačí chřipka*4
+0*Kraslice*6
+1*Šrot*4
+2*Polykač plamenů*4
+0*Automapa*4
+1*Bahenní zábal*4
+2*Osvěžovač vzduchu*4
+0*Zemní plyn*4
+1*Dálkové studium*4
+2*Vymývání mozku*4
+0*Točená zmrzlina*4
+1*Pažitka*6
+2*Ruleta*4
+0*Boxerky*4
+1*Biozemědělec*4
+2*Jeřáb*4
+0*Olivovník*6
+1*Roleta*4
+2*Přelud*4
+0*Matrace*4
+1*Usilovná práce*4
+2*Čtení z ruky*4
+0*Plyšový medvídek*4
+1*Křiklavá barva*4
+2*Tulák*6
+0*Oslí ucho*6
+1*Trh práce*4
+2*Pánské kolo*4
+0*Hlava státu*4
+1*Maloměšťák*4
+2*Kojit*4
+0*kanystr na benzín*4 
+1*Výběhový model*4
+2*Psí známka*4
+0*Klepeto*4
+1*Svišť*4
+2*Rumcajs*6
+0*Aromalampa*4
+1*Přirážka*4
+2*Pláž*4
+0*Dělová koule*4
+1*Náhradník*6
+2*Pelerína*4
+0*Horská vesnice*4
+1*Krevní banka*4
+2*Trenýrky*4
+0*Krokodýlí slzy*4
+1*Afrodiziakum*4
+2*Fronta*6
+0*Lavička náhradníků*4
+1*Premiéra*6
+2*Diskusní skupina*4
+0*Lokny*4
+1*Zvlhčovač vzduchu*4
+2*Vrchní číšník*4
+0*Důl*4
+1*Úhlavní nepřítel*4
+2*Volské oko*6
+0*Manžetový knoflík*4
+1*Detektor lži*4
+2*Obkladač*4
+0*Diamantová svatba*6
+1*Pěstní právo*4
+2*Pokrývač*4
+0*Polárka*4
+1*Vášeň*4
+2*Metla na sníh*4
+0*Roztahovací gauč*4
+1*Chybné hlášení*4
+2*Diskžokej*4
+0*Oblak kouře*4
+1*Kozí bradka*4
+2*Pistolník*6
+0*Blatouch*6
+1*Drezúra*4
+2*Zemětřesení*4
+0*Botanická zahrada*4
+1*Učitelský sbor*4
+2*Odšťavovač*4
+0*Úl*4
+1*Vojenské cvičiště*4
+2*Dalekohled*4
+0*Sněhová královna*6
+1*Aliby*4
+2*Demonstrace*4
+0*E55*4
+1*Titulní strana*4
+2*Konzerva*4
+0*Parlament*4
+1*Obrana*6
+2*Ohlédnutí*4
+0*Pivní mozol*4
+1*Pohádková postava*4
+2*Padák*4
+0*Kaňka*6
+1*Kouřový signál*4
+2*Skejťák*4
+0*Jmelí*5
+1*Reflexní masáž*6
+2*Zajíc v pytli*5
+0*Lodní kuchař*5
+1*Teorie ralativity*5
+2*Knihomol*5
+0*Polystyren*5
+1*Zastřešující organizace*5
+2*Prostopášník*5
+0*Pípa*5
+1*Smogový alarm*5
+2*Ztráta chuti*6
+0*Pevnina*5
+1*Egocentrik*5
+2*Poustevník*6
+0*Inkubátor*5
+1*Bylinkový čaj*5
+2*Stonožka*5
+0*Housenka*5
+1*Obklíčení*6
+2*Suchý zip*5
+0*Jarmark*5
+1*Určení otcovství*5
+2*Léčivý pramen*5
+0*Rogalo*5
+1*DNA*5
+2*Jazykolam*6
+0*Síťované punčochy*5
+1*Erb*5
+2*Babské ucho*5
+0*Angorská kočka*5
+1*Volavka*5
+2*Bezdomovec*5
+0*Veterán*5
+1*Kalendárium*5
+2*Pěšák*6
+0*Mateřská škola*5
+1*Chlév*5
+2*Černá skříňka*5
+0*Lovec perel*6
+1*Futurologie*5
+2*Vyhazovač*5
+0*Informační tabule*5
+1*Čistokrevný pes*5
+2*Volná noha*6
+0*Reproduktor*5
+1*Slovní hříčka*5
+2*Višně*5
+0*Cibulovitá rostlina*5
+1*Imitátor*6
+2*Tříčtvrteční takt*5 
+0*Polstrovaný nábytek*5
+1*Životní prostředí*5
+2*Masařka*5
+0*Skalničky*5
+1*Orient-Expres*5
+2*Alkatras*5
+0*Krysař*6
+1*Lidoop*5
+2*Tlumič*5
+0*Aprílové počasí*6
+1*Trvalka*5
+2*Sochař*5
+0*Start rakety*5
+1*Fauna*5
+2*Šprýmař*5
+0*Džungle*5
+1*Ochranný faktor*5
+2*Kebab*5
+0*Potrubní pošta*5
+1*Nabíječka*5
+2*Tapetování*6
+0*Kostka ledu*5
+1*Základní pojem*5
+2*Labužník*5
+0*Hrad z písku*5
+1*Mazaný Filip*6
+2*Hra na schovávanou*5
+0*Atomové jádro*6
+1*Rovnost příležitostí*5
+2*Rybí tyčinky*5
+0*Chřest*5
+1*Cvičený medvěd*5
+2*Akvárium*5
+0*Gilotina*5
+1*Vůně*5
+2*Sklář*5
+0*Bludný kruh*6
+1*Látková výměna*5
+2*Šlapadlo*5
+0*Zobcová flétna*5
+1*Záludnost*6
+2*Strojvedoucí*5
+0*Piškot*5
+1*Princip*5
+2*Převlékárna*5
+0*Doutník*6
+1*Slinivka břišní*5
+2*Co by kamenem dohodil*5
+0*Cílová rovinka*5
+1*Sladké chvíle*5
+2*Znaková řeč*5
+0*Oční lékař*5
+1*Rodinné balení*5
+2*Plenta*6
+0*Syndrom*5
+1*Světlík*5
+2*Spirituál*5
+0*Samovazba*5
+1*Soumrak bohů*5
+2*Tlak vzduchu*5
+0*Hlemýžď*5
+1*Řečnický obrat*5
+2*Kostkový cukr*6
+0*Pohřeb*6
+1*Mýtina*5
+2*Medicimbal*5
+0*Vlkodlak*5
+1*Solný sloup*5
+2*Tvořivá duše*5
+0*Výfukový plyn*5
+1*Svalovec*5
+2*Ševcovo kopyto*5
+0*Polévková kostka*5
+1*Pyl*6
+2*Jízdní řád*5
+0*Strašidelný dům*5
+1*Pohroma*5
+2*Vzít roha*5
+0*Kormidelník*5
+1*Veletrh*5
+2*Hraboš polní*6
+0*Magnetické pole*5
+1*Obětní dar*5
+2*Model letadla*5
+0*Mořský jazyk*6
+1*Následník trůnu*5
+2*Taneční krok*5
+0*Ústřice*5
+1*Mastičkář*5
+2*Vášnivý čtenář*5
+0*Rentgenový snímek*5
+1*Tichá voda*5
+2*Chatovat*6
+0*Letenka*5
+1*Pořadí*5
+2*Plošný spoj*5
+0*Rtuťový sloupec*5
+1*Bláznivá představa*5
+2*Slunečnicové semínko*6
+0*Travnatý koberec*5
+1*Vozka*5
+2*Zábava*6
+0*Moskytiéra*5
+1*Cílová skupina*5
+2*Kongres*5
+0*Bambusová třtina*6
+1*Světelné efekty*5
+2*Jehelníček*5
+0*Paví oko*5
+1*Propagace*5
+2*Pigmentová skvrna*5
+0*Schody do nebe*5
+1*Zarážka*6
+2*Pampeliška*5
+0*Holka na vdávání*5
+1*Svačina*5
+2*Polaroid*5
+0*Žabí král*5
+1*Pohanka*5
+2*Mazlíček*5
+0*Notebook*5
+1*Diplomová práce*5
+2*Doktorát*6
+0*Skartovačka*6
+1*Mohér*5
+2*Minigolf*5
+0*Beranice*5
+1*Klíčový okamžik*5
+2*Tučné písmo*5
+0*Šípková Růženka*5
+1*Touha po dobrodružství*5
+2*Výmyk*5
+0*Lalok*5
+1*Bulvární tisk*5
+2*Kapesní zloděj*5
+0*Oslí můstek*5
+1*Bambusový žebřík*5
+2*Krotitel lvů*5
+0*Mula*5
+1*Sabotáž*5
+2*Cizinec*6
+0*Dlouhostrstý jezevčík*5
+1*Magický čtverec*5
+2*Kukačky*5
+0*Sardinky v oleji*5
+1*Zběsilost*6
+2*Nenávistná láska*5
+0*Zabiják lásky*5
+1*Urážka cti*5
+2*Řízená střela*6
+0*Škvor*5
+1*Monstrum*5
+2*Lenoch*5
+0*Salón pro psy*6
+1*Druhové jméno*5
+2*Knock out*5
+0*Pancéřované sklo*5 
+1*Zločinec*5
+2*Škrtič*5
+0*Ovládací panel*5
+1*Křehký chléb*5
+2*Medoví medvídci*6
+0*Pirátská loď*5
+1*Lodová mluva*5
+2*Řezáky*5
+0*Úřední šiml*5
+1*Společenský žebříček*6
+2*Zrcadlové písmo*5
+0*Druhá odmocnina*5
+1*Konzumní společnost*5
+2*Ušák*5
+0*Příčka žebříku*5
+1*Atlas hub*5
+2*Holub*5
+0*Mikroskop*5
+1*Kouzelný nápoj*5
+2*Šimrání v nose*6
+0*Žralok*5
+1*Asfalt*5
+2*Otazník*6
+0*Stoupačky*5
+1*Kostní dřeň*5
+2*Dárce orgánu*5
+0*Levák*6
+1*Soudní medicína*5
+2*Vaječný koňak*5
+0*Hřebík do rakve*5
+1*Hořká čokoláda*5
+2*Akné*5
+0*Banana split*5
+1*Mléčný koktejl*5
+2*Proutník*6
+0*Sloučenina*5
+1*Státeček*5
+2*Rytířské brnění*5
+0*Amulet*5
+1*Splatnost*5
+2*Oblak vůně*5
+0*Houpací síť*5
+1*Sonda*5
+2*Večerníček*6
+0*Žaludeční vředy*5
+1*Pracovní doba*5
+2*Dávidlo*5
+0*Znamení zvěrokruhu*5
+1*Duch času*6
+2*Cibulový kroužek*5
+0*Cirkus*6
+1*Remíza*5
+2*Kancelářská myš*5
+0*Stupnice*5
+1*Daňová úspora*5
+2*Odpolední procházka*5
+0*Kukaččí vejce*5
+1*Obětní beránek*5
+2*Corn-flakes*6
+0*Kartářka*5
+1*Dělená strava*5
+2*Zatmění Slunce*5
+0*Tukožroutská polévka*5
+1*Puberta*6
+2*Břichomluvec*5
+0*Gelové nehty*5
+1*Panika*5
+2*Žárlivá scéna*5
+0*Loket*5
+1*Humoreska*5
+2*Dispečer*6
+0*Vír*5
+1*Hobby*5
+2*Kámen úrazu*5
+0*Popínavá růže*5
+1*Deformace*5
+2*Měchy*5
+0*Vlečka*5
+1*Pedofil*6
+2*Křepčení*5
+0*Achillova šlacha*5
+1*Sňatkový podvodník*5
+2*Místo na Slunci*5
+0*Dvojčata*6
+1*Kandidát*5
+2*SMS*5
+0*Verzatilka*5
+1*Obchodní rejstřík*5
+2*Dravec*5
+0*Klapky na uši*5
+1*Protekce*6
+2*Samotář*5
+0*Čertovina*5
+1*Trýznitel*5
+2*Chovatel*5
+0*Kudrnáč*5
+1*Korupce*5
+2*Kotrmelec*6
+0*Boží oko*5
+1*Rada*5
+2*Studentská láska*5
+0*Zubní můstek*6
+1*Chcípák*5
+2*Záchranná brzda*5
+0*Polokoule*5
+1*Oidipovský komplex*5
+2*Věstonická Venuše*6
+0*Limuzína*5
+1*Kaple*5
+2*Válečná sekera*5
+0*Katedrála*6
+1*Bylinářka*5
+2*Chlapák*5
+0*Šroubovák*5
+1*Maturita*5
+2*Pekař*5
+0*Skupinová cesta*5
+1*Plechový bubínek*5
+2*Cestovní horečka*5
+0*Penedrek*6
+1*Geometrie*5
+2*Zpovědnice*5
+0*Uzel*5
+1*Vláknina*5
+2*Výhra v loterii*6
+0*Studna*5
+1*Jezdecký kůň*5
+2*Hod oštěpem*5
+0*Koňaková sklenice*5
+1*Pracovní kniha*6
+2*Odvoz odpadu*5
+0*Vedlejší ulice*5
+1*Ovčí mléko*5
+2*Flétna*5
+0*Růžičková kapusta*6
+1*Frigidita*5
+2*Výtahová služba*5
+0*Lidojed*5
+1*Býčí šíje*5
+2*Pirátská kopie*5
+0*Kokosové mléko*5
+1*Záchytný bod*5
+2*Slabá koncentrace*6
+0*Milník*5
+1*Zkratka*5
+2*Rána bičem*5
+0*Praha*5
+1*Lahváč*5
+2*Překážkový běh*5
+0*Dlažební kostka*5
+1*Porucha spánku*5
+2*Pořádkumilovnost*5
+0*Hvězdicovitá rostlina*6
+1*Povzbuzovač chuti*5
+2*Maňásek*5
+0*Měřítko*5
+1*Těžiště*5
+2*Etiketovací kleště*5
+0*Chrpa*5
+1*Osmašedesátník*5
+2*Škrabka na brambory*5
+0*Ledvinová pánvička*6
+1*Opilec*5
+2*Spartakiáda*5
+0*Velbloudí srst*5
+1*Soužití*6
+2*Elektormagnetická vlna*5
+0*DVD*5
+1*Volební plakát*5
+2*Stávka v sedě*5
+0*Vnouče*5
+1*Precedens*5
+2*Milostný trojúhelník*6
+0*Dárkové balení*5
+1*Černý trh*5
+2*Předklon*5
+0*Chovný rybník*5
+1*Klamný obraz*6
+2*Ujet z místa nehody*5
+0*Ostrá zatáčka*5
+1*Slepičí polévka*5
+2*Najíst se do sytosti*5
+0*Nákupní centrum*5
+1*originální pojetí*5
+2*Křest ohněm*6
+0*Hrazda*5
+1*Zkumavka*5
+2*Staré Bělidlo*5
+0*Záře svíčky*5
+1*Existenční strach*5
+2*Hřebenová túra*6
+0*Promenáda*5
+1*Líná huba*5
+2*Skleróza*5
+0*Ohnisko zemětřesení*6
+1*Tokání*5
+2*Krční obratel*5
+0*Vrabec v hrsti*5
+1*Těstoviny*5
+2*Momentka*5
+0*Hrtan*5
+1*Ctižádost*5
+2*Zaříkání duchů*5
+0*Ribstole*5
+1*Plavčík*5
+2*Příšera*6
+0*Polníček*6
+1*Odepření lásky*5
+2*Lamač srdcí*5
+0*Mořská úžina*5
+1*Sousední země*5
+2*Teleskop*5
+0*Ústní dutina*5
+1*Dodatečné náklady*5
+2*Krabice na sušenky*6
+0*Natržení svalu*5
+1*Živobytí*5
+2*Vodní elektrárna*5
+0*Čelist*6
+1*Opěrný sloup*5
+2*Řeč těla*5
+0*Střední ucho*5
+1*Pážecí střih*5
+2*Zámek s číselným kódem*5
+0*Modelka*6
+1*Rozkaz*5
+2*Letecká pošta*5
+0*Smíšený les*5
+1*Území nikoho*5
+2*Polykač mečů*5
+0*Posilovna*5
+1*Kojná*5
+2*Pěšinka ve vlasech*5
+0*Vesmír*5
+1*Ovocný strom*5

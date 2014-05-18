@@ -1,5 +1,7 @@
 package com.app.activepartytime.core.data.tasks;
 
+import com.app.activepartytime.core.game.tasks.TaskType;
+
 /**
  * Created by Dave on 16.4.14.
  */
@@ -8,7 +10,7 @@ public class TaskDB {
     private int _id;
     private String _name;
     private int _points;
-    private int _taskType;
+    private TaskType _taskType;
 
     public TaskDB() {}
 
@@ -16,13 +18,22 @@ public class TaskDB {
         this._id = id;
         this._name = name;
         this._points = points;
-        this._taskType = taskType;
+        switch (taskType){
+            case 0: _taskType = TaskType.DRAWING; break;
+            case 1: _taskType = TaskType.SPEAKING; break;
+            case 2: _taskType = TaskType.PANTOMIME; break;
+        }
+
     }
 
     public TaskDB(String name, int points, int taskType) {
         this._name = name;
         this._points = points;
-        this._taskType = taskType;
+        switch (taskType){
+            case 0: _taskType = TaskType.DRAWING; break;
+            case 1: _taskType = TaskType.SPEAKING; break;
+            case 2: _taskType = TaskType.PANTOMIME; break;
+        }
     }
 
     public int getID() {
@@ -49,12 +60,25 @@ public class TaskDB {
         this._points = _points;
     }
 
-    public int getTaskType() {
+    public TaskType getTaskType() {
         return _taskType;
     }
 
-    public void setTaskType(int _taskType) {
-        this._taskType = _taskType;
+    public int getTaskTypeID() {
+        switch (_taskType){
+            case DRAWING: return 0;
+            case SPEAKING: return 1;
+            case PANTOMIME: return 2;
+        }
+        return  -1;
+    }
+
+    public void setTaskType(int taskType) {
+        switch (taskType){
+            case 0: _taskType = TaskType.DRAWING; break;
+            case 1: _taskType = TaskType.SPEAKING; break;
+            case 2: _taskType = TaskType.PANTOMIME; break;
+        }
     }
 
     @Override

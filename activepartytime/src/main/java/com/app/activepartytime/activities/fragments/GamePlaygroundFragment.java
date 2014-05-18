@@ -4,12 +4,10 @@ package com.app.activepartytime.activities.fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -39,10 +37,9 @@ public class GamePlaygroundFragment extends Fragment {
     private int currentTeam;
     private ImageView[] figures;
     private TextView[] teamPositions;
-<<<<<<< HEAD
+
     private GameMoveActivity activity;
-=======
->>>>>>> origin/TEST-COMMIT
+
 
     public GamePlaygroundFragment(Game g, GameMoveActivity ac) {
         // Required empty public constructor
@@ -86,7 +83,7 @@ public class GamePlaygroundFragment extends Fragment {
 
         int imagesID = 1;
 
-        for (int i = 0; i < playground.getPlaygroundLength(); i++) {
+        for (int i = 0; i < playground.getPlaygroundLength()-1; i++) {
             ImageView image = new ImageView(getActivity());
             // image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             TaskType type = playground.getTaskType(i);
@@ -109,6 +106,26 @@ public class GamePlaygroundFragment extends Fragment {
             layoutPlayground.addView(image);
 
         }
+        /*
+        final state
+         */
+        ImageView image = new ImageView(getActivity());
+        // image.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        image.setImageResource(R.drawable.finalstate);
+
+        image.setId(imagesID);
+
+        layoutParams = new RelativeLayout.LayoutParams(180, 200);
+        layoutParams.setMargins(24,0,24,0);
+        if(imagesID != 1){
+            layoutParams.addRule(RelativeLayout.RIGHT_OF, imagesID -1);
+        }
+
+        imagesID++;
+        image.setLayoutParams(layoutParams);
+
+        layoutPlayground.addView(image);
 
 
 
@@ -161,7 +178,7 @@ public class GamePlaygroundFragment extends Fragment {
             TextView teamPositionTextView = new TextView(getActivity());
             StringBuffer text = new StringBuffer();
             text.append("Position: ");
-            int teamPosition = teams[i].getPlaygroundPosition();
+            int teamPosition = teams[i].getPlaygroundPosition()+1;
             text.append(teamPosition);
             text.append('/');
             text.append(playground.getPlaygroundLength());
@@ -220,16 +237,17 @@ public class GamePlaygroundFragment extends Fragment {
 
         for(int i=0 ; i < teams.length; i++){
             ImageView image = new ImageView(getActivity());
+            int marginLeft =0;
             switch (i){
-                case 0: image.setImageResource(R.drawable.figure_blue);break;
-                case 1: image.setImageResource(R.drawable.figure_yellow);break;
-                case 2: image.setImageResource(R.drawable.figure_red);break;
-                case 3: image.setImageResource(R.drawable.figure_green);break;
+                case 0: image.setImageResource(R.drawable.figure_blue);marginLeft = -15; break;
+                case 1: image.setImageResource(R.drawable.figure_yellow);marginLeft = 15;break;
+                case 2: image.setImageResource(R.drawable.figure_red);marginLeft = 45;break;
+                case 3: image.setImageResource(R.drawable.figure_green);marginLeft = 60;break;
             }
             image.setId("teamFigure".hashCode()+i);
             image.setMaxHeight(50);
             layoutParams = new RelativeLayout.LayoutParams(140, 200);
-            layoutParams.setMargins(24,0,24,0);
+            layoutParams.setMargins(marginLeft,0,24,0);
             layoutParams.addRule(RelativeLayout.RIGHT_OF, 0);
             image.setLayoutParams(layoutParams);
 
@@ -267,14 +285,18 @@ public class GamePlaygroundFragment extends Fragment {
             StringBuffer text = new StringBuffer();
             text.append("Position: ");
             int teamPosition = teams[i].getPlaygroundPosition();
-            text.append(teamPosition);
+            text.append(teamPosition+1);
             text.append('/');
             text.append(playground.getPlaygroundLength());
             text.append("  ");
-            switch (playground.getTaskType(teamPosition)){
-                case DRAWING: text.append("Drawing");break;
-                case SPEAKING: text.append("Speaking");break;
-                case PANTOMIME: text.append("Pantomime");break;
+            if (teamPosition >= playground.getPlaygroundLength()-1){//final state
+                text.append("Final State");
+            }else{
+                switch (playground.getTaskType(teamPosition)){
+                    case DRAWING: text.append("Drawing");break;
+                    case SPEAKING: text.append("Speaking");break;
+                    case PANTOMIME: text.append("Pantomime");break;
+                }
             }
             teamPositionTextView.setText(text.toString());
             teamPositionTextView.refreshDrawableState();

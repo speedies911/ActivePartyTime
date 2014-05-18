@@ -25,7 +25,11 @@ public class Game {
      * @param team
      */
     public void moveTeam(Team team, int points) {
-        team.moveTeam(points);
+        if ((team.getPlaygroundPosition()+ points) >= playground.getPlaygroundLength()){//FINAL STATE
+            team.moveTeam(playground.getPlaygroundLength()-team.getPlaygroundPosition()-1);
+        }else{
+            team.moveTeam(points);
+        }
     }
 
     public void startGame() {

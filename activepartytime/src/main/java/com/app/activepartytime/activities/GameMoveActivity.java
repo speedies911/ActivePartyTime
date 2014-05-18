@@ -73,11 +73,8 @@ public class GameMoveActivity extends FragmentActivity {
         //getActionBar().hide();
 
         gameInfoFragment = new GameInfoFragment(game, this);
-<<<<<<< HEAD
+
         gamePlaygroundFragment = new GamePlaygroundFragment(game,this);
-=======
-        gamePlaygroundFragment = new GamePlaygroundFragment(game);
->>>>>>> origin/TEST-COMMIT
 
         mPager = (ViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -107,24 +104,19 @@ public class GameMoveActivity extends FragmentActivity {
         // Add 2 tabs, specifying the tab's text and TabListener
 
         actionBar.addTab(actionBar.newTab().setText("Card").setTabListener(tabListener));
-<<<<<<< HEAD
+
         actionBar.addTab(actionBar.newTab().setText("Playground").setTabListener(tabListener));
-=======
-        actionBar.addTab(actionBar.newTab().setText("Time").setTabListener(tabListener));
->>>>>>> origin/TEST-COMMIT
+
         game.startGame();
     }
 
 
-<<<<<<< HEAD
+
     public void updatePlaygroundFragment() {
 
         gamePlaygroundFragment.updateState();
 
-=======
-    public void update() {
-        gamePlaygroundFragment.updateState();
->>>>>>> origin/TEST-COMMIT
+
         mPager.setCurrentItem(1);
     }
 
@@ -146,10 +138,9 @@ public class GameMoveActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-<<<<<<< HEAD
+
             Fragment fragment = null;
-=======
->>>>>>> origin/TEST-COMMIT
+
             if (position == 0) {
                 return gameInfoFragment;
             } else {

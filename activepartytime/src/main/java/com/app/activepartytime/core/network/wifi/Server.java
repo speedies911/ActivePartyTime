@@ -1,5 +1,7 @@
 package com.app.activepartytime.core.network.wifi;
 
+import android.widget.Button;
+
 import com.app.activepartytime.core.game.Team;
 
 import java.io.IOException;
@@ -22,7 +24,10 @@ public class Server {
     private String nickname;
     private boolean ready;
 
-    public Server(int numberOfTeams, String nickname) {
+    Button b;
+
+    public Server(int numberOfTeams, String nickname, Button b) {
+        this.b = b;
         try {
             this.server = new ServerSocket(PORT);
         } catch (IOException e) {
@@ -51,7 +56,7 @@ public class Server {
     }
 
     public void connectPlayers() {
-        new Connector(numberOfTeams, this).start();
+        new Connector(numberOfTeams, this,b).start();
     }
 
     // TODO

@@ -11,14 +11,17 @@ import java.util.Random;
  */
 public enum TaskType {
 
-    DRAWING("Drawing", R.drawable.drawing),
-    SPEAKING("Talking", R.drawable.speaking),
-    PANTOMIME("Pantomime", R.drawable.pantomime);
+    DRAWING(0,"Drawing", R.drawable.drawing),
+    SPEAKING(1,"Talking", R.drawable.speaking),
+    PANTOMIME(2,"Pantomime", R.drawable.pantomime);
 
+    private final int typeID;
     private final int imageLocation;
     private final String name;
 
-    private TaskType(String name, int imageLocation) {
+
+    private TaskType(int id, String name, int imageLocation) {
+        this.typeID = id;
         this.name = name;
         this.imageLocation = imageLocation;
     }
@@ -42,5 +45,9 @@ public enum TaskType {
 
         TaskType[] types = {DRAWING,SPEAKING,PANTOMIME};
         return types[rand];
+    }
+
+    public int getTypeID() {
+        return typeID;
     }
 }

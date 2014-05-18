@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ import java.util.NoSuchElementException;
 public class JoinWiFiActivity extends Activity {
 
     EditText IPaddress;
+    EditText teamName;
     WifiManager mainWifi;
     private JoinTask joinTask;
 
@@ -48,6 +50,7 @@ public class JoinWiFiActivity extends Activity {
         setContentView(R.layout.activity_join_wifi);
 
         IPaddress = (EditText) findViewById(R.id.textIPaddress);
+        teamName = (EditText) findViewById(R.id.joinTeamNameName);
         mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 
         if(mainWifi.isWifiEnabled()) {
@@ -69,7 +72,7 @@ public class JoinWiFiActivity extends Activity {
     }
 
     public void join(View view) {
-        joinTask = new JoinTask(IPaddress.getText().toString(), 5750);
+        joinTask = new JoinTask(IPaddress.getText().toString(), 5750,teamName.getText().toString(),(Button)findViewById(R.id.buttonPICOposliJoin));
         joinTask.execute();
     }
 

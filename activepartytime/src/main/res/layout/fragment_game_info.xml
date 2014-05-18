@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/fragmentInfo"
-    tools:context="com.app.activepartytime.activities.fragments.GameInfoFragment"
-    android:fillViewport="false"
-    >
 
-    <RelativeLayout
-=======
 <RelativeLayout
->>>>>>> origin/TEST-COMMIT
         android:id="@+id/container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,31 +20,11 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:minHeight="40dp"
-            android:minWidth="100dp" />
+            android:minWidth="100dp"
+            android:textSize="20dp" />
 
-       <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GENERATE TASK"
-            android:id="@+id/generateButton"
-            android:clickable="true"
-            android:layout_below="@+id/activeTeam"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentStart="false"
-            android:minWidth="200dp"
-            android:minHeight="200dp"
-            />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Karta"
-            android:id="@+id/taskCard"
-            android:layout_below="@+id/generateButton"
-            android:layout_centerHorizontal="true"
-            android:minWidth="200dp"
-            android:minHeight="200dp"
-            android:visibility="gone" />
+
 
 
 
@@ -65,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="START/PAUSE"
             android:id="@+id/startStopButton"
-            android:layout_below="@+id/taskCard"
+            android:layout_below="@+id/taskLayout"
             android:layout_marginLeft="@dimen/activity_time_button_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:visibility="gone"/>
@@ -78,7 +46,7 @@
             android:id="@+id/stopWatch"
             android:minWidth="100dp"
             android:minHeight="50dp"
-            android:layout_below="@+id/taskCard"
+            android:layout_below="@+id/taskLayout"
             android:layout_marginLeft="@dimen/activity_time_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:visibility="gone"
@@ -91,12 +59,11 @@
 
             android:id="@+id/crossButton"
             android:background="@drawable/cross"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/stopWatch"
             android:layout_marginLeft="50dp"
-            android:layout_marginBottom="50dp"
-            android:layout_height="100dp"
-
-            android:layout_width="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
             android:visibility="gone"
             />
 
@@ -105,11 +72,59 @@
         <ImageButton
             android:id="@+id/tickButton"
             android:background="@drawable/tick"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="200dp"
-            android:layout_alignParentLeft="@+id/crossButton"
-            android:layout_height="100dp"
-            android:layout_width="100dp"
+            android:layout_below="@+id/stopWatch"
+            android:layout_toRightOf="@+id/crossButton"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:layout_height="80dp"
+            android:layout_width="80dp"
             android:visibility="gone"/>
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:background="#dd0000"
+        android:layout_height="220dp"
+        android:id="@+id/taskLayout"
+        android:layout_below="@+id/activeTeam"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:visibility="gone">
+
+
+
+
+
+
+
     </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:background="#dd0000"
+        android:layout_height="200dp"
+        android:id="@+id/taskLayoutGenerate"
+        android:layout_below="@+id/activeTeam"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GENERATE TASK"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="85dp"
+            android:textColor="@color/Yellow"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
