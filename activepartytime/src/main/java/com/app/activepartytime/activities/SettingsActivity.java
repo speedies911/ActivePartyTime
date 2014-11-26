@@ -47,6 +47,7 @@ public class SettingsActivity extends Activity {
         // This bundle will be passed to onCreate if the process is
         // killed and restarted.
         savedInstanceState.putLong("time", time);
+        System.out.println("save");
         super.onSaveInstanceState(savedInstanceState);
     }
 

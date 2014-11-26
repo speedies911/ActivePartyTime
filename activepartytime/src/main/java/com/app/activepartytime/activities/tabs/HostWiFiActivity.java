@@ -15,9 +15,12 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.activepartytime.R;
 import com.app.activepartytime.core.network.wifi.Server;
+
+import java.io.IOException;
 
 public class HostWiFiActivity extends Activity {
 
@@ -41,7 +44,7 @@ public class HostWiFiActivity extends Activity {
 
             IPaddressText.setText(ipAddress);
         } else {
-            IPaddressText.setText("Nemas zaplou WiFi PICO");
+            IPaddressText.setText("Turn on your WiFi");
         }
 
 
@@ -53,9 +56,16 @@ public class HostWiFiActivity extends Activity {
     }
 
     public void startHost(View view) {
-        server = new Server(2,"ACTIVITY JAK CIP", (Button) findViewById(R.id.buttonPICOposli));
-        server.connectPlayers();
+        try {
+            server = new Server(4,5750);
+            server.run();
+            Toast toast = Toast.makeText(this, "Server is running!", Toast.LENGTH_SHORT);
+            toast.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 
     @Override

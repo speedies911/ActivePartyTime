@@ -5,6 +5,8 @@ import android.widget.Button;
 import com.app.activepartytime.core.game.Team;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -15,73 +17,172 @@ import java.util.List;
  */
 public class Server {
 
+    private final int PORT;
     private ServerSocket server;
-    private int numberOfTeams;
-    private List<Team> teams;
+    private Socket[] sockets;
 
-    public static final int PORT = 5750;
+    private final int NUMBER_OF_TEAMS;
 
-    private String nickname;
-    private boolean ready;
+    private OutputStream os;
+    private InputStreamProvider isp;
 
-    Button b;
-
-    public Server(int numberOfTeams, String nickname, Button b) {
-        this.b = b;
-        try {
-            this.server = new ServerSocket(PORT);
-        } catch (IOException e) {
-            System.out.println("Port is not available.");
-            System.exit(-1);
-        }
-        this.numberOfTeams = numberOfTeams;
-        this.teams = new ArrayList<Team>();
-
-        this.nickname = nickname;
-        this.ready = false;
-
-        System.out.println("Server is running...");
+    public Server(int numberOfTeams, int port) throws IOException {
+        this.PORT = port;
+        this.server = new ServerSocket(port);
+        this.NUMBER_OF_TEAMS = numberOfTeams;
+        this.sockets = new Socket[numberOfTeams];
+        System.out.println("Server is ready ...");
     }
 
-    public void disconnect() {
+    public int getPORT() {
+        return PORT;
+    }
+
+    public OutputStream getOs() {
+        return os;
+    }
+
+    public void run() {
+        connectTeams();
+
         try {
-            this.server.close();
+            initThreads();
         } catch (IOException ex) {
-            System.out.println("Disconnecting error");
+            ex.printStackTrace();
         }
+
     }
 
-    public boolean isRunning() {
-        return !this.server.isClosed();
+    private void initThreads() throws IOException {
+        os = new OutputStream();
+        isp = new InputStreamProvider();
     }
 
-    public void connectPlayers() {
-        new Connector(numberOfTeams, this,b).start();
-    }
+    private void connectTeams() {
+        System.out.println("Waiting for teams ...");
+        for (int i = 0; i < NUMBER_OF_TEAMS; i++) {
+            try {
+                Socket s = server.accept();
+                sockets[i] = s;
+                System.out.println("Team #" + i + " connected from " + s.getInetAddress());
 
-    // TODO
-    public List<Socket> getSockets() {
-        List<Socket> out = new ArrayList<Socket>();
-        for (Team team : teams) {
-            //out.add(team.getSocket());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return;
+            }
         }
-        return out;
+        System.out.println("All teams connected");
     }
 
-    public ServerSocket getServer() {
-        return server;
+
+    /**
+     *
+     */
+    public class OutputStream {
+
+        private ObjectOutputStream[] dos;
+
+        public OutputStream () {
+            dos = new ObjectOutputStream[NUMBER_OF_TEAMS];
+            init();
+        }
+
+        private void init() {
+            for (int i = 0; i < NUMBER_OF_TEAMS; i++) {
+                try {
+                    dos[i] = new ObjectOutputStream(sockets[i].getOutputStream());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+        public void sendMessageTo(Object what, int team) {
+            try {
+                dos[team].writeObject(what);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+
+        public void sendMessageToAll(Object what) {
+            for (int i = 0; i < sockets.length; i++) {
+                try {
+                    dos[i].writeObject(what);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
     }
 
-    public boolean isReady() {
-        return ready;
+
+    /**
+     *
+     */
+    private class InputStreamProvider {
+
+        private InputStreamThread[] threads;
+
+        private InputStreamProvider() throws IOException {
+            this.threads = new InputStreamThread[NUMBER_OF_TEAMS];
+            init();
+            startThreads();
+        }
+
+        private void init() throws IOException {
+            for (int i = 0; i < threads.length; i++) {
+                threads[i] = new InputStreamThread(sockets[i]);
+            }
+        }
+
+        private void startThreads() {
+            for (int i = 0; i < threads.length; i++) {
+                threads[i].start();
+            }
+        }
+
     }
 
-    public void setReady(boolean ready) {
-        this.ready = ready;
-    }
+    /**
+     *
+     */
+    private class InputStreamThread extends Thread {
 
-    public int getNumberOfTeams() {
-        return numberOfTeams;
+        private ObjectInputStream ois;
+        private Socket socket;
+
+        private InputStreamThread(Socket socket) throws IOException {
+            this.socket = socket;
+        }
+
+        @Override
+        public void run() {
+            Object msg = null;
+            try {
+                ois = new ObjectInputStream(socket.getInputStream());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            while(true) {
+                try {
+                    msg = ois.readObject();
+                    if (msg instanceof String) {
+                        String text = (String)msg;
+                        System.out.println("Incoming String: " + text);
+                    }
+                    System.out.println("Msg: " + msg);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+
+
     }
 
 }

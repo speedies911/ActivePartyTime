@@ -17,104 +17,91 @@ import java.util.Queue;
 /**
  * Created by Dave on 5.5.14.
  */
-public class JoinTask extends AsyncTask<Void,Void,Void> {
+public class JoinTask {
 
-    private Socket client;
+    private Socket socket;
     private String IP;
     private int PORT;
-    private String teamName;
 
-    private ObjectOutputStream oos;
-    private ObjectInputStream ois;
-    private Queue<Object> messageToBeSent;
-    private boolean isConnected;
-    private JoinReceiver jr;
+    private OutputStream os;
+    private InputListener il;
 
-    public JoinTask(String IP, int PORT, String teamName ,Button b) {
-        this.client = null;
+    public JoinTask (String IP, int PORT) {
         this.IP = IP;
         this.PORT = PORT;
-        this.teamName = teamName;
-        isConnected = false;
-        messageToBeSent = new LinkedList<Object>();
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                posliPico();
-            }
-        });
+    }
+
+    public OutputStream getOs() {
+        return os;
+    }
+
+
+
+    public boolean run() {
+
+        try {
+
+            socket = new Socket(IP, PORT);
+            System.out.println("Connected to server!");
+
+            os = new OutputStream();
+            il = new InputListener();
+            il.start();
+            return true;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return false;
+        }
 
     }
 
-    @Override
-    protected Void doInBackground(Void... voids) {
-        connectToServer(IP);
-        return null;
-    }
+    public class OutputStream {
 
-    private boolean connectToServer(String ip) {
-        boolean found = false, foundIP = false;
+        private ObjectOutputStream dos;
 
-        System.out.println("JOIN IP PICO: " + ip);
-
-        while (!found) {
+        public OutputStream() {
             try {
-                while (!foundIP) {
-                    //StringTokenizer token = new StringTokenizer(ip, ":");
-                    try {
-                        client = new Socket(ip, 5750);
-                        foundIP = true;
-                        isConnected = true;
-                        System.out.println("______ CONNECTED _____");
-
-                      //  System.out.println("text poslan  1111111112222222");
-                        oos = new ObjectOutputStream(client.getOutputStream());
-                       // System.out.println("text poslan  11111111133333333");
-
-                       // System.out.println("text poslan  111111111");
-                       // sendMessage("DEBILE, TADY TUNTA");
-                        //System.out.println("text poslan");
-                        jr = new JoinReceiver(client);
-                        jr.run();
-                        sendMessage(teamName);
-
-                    } catch (NoSuchElementException e) {
-                        //wrongIP();
-                        System.out.println("WRONG IP");
-                    }
-                    found = true;
-                }
-            } catch (UnknownHostException ex) {
-                //noServerPane();
-                System.out.println("Unknown HOST");
+                dos = new ObjectOutputStream(socket.getOutputStream());
             } catch (IOException ex) {
-                //noServerPane();
-                System.out.println("IOE");
+                ex.printStackTrace();
             }
         }
 
-        return found;
-    }
-
-    private void sendMessage(Object o)  {
-       messageToBeSent.add(o);
-
-        while(!messageToBeSent.isEmpty()){ // send all Messages
-            System.out.println("client posila: " + messageToBeSent.peek());
+        public void sendMessage(Object what) {
             try {
-                oos.writeObject(messageToBeSent.poll());
-            } catch (IOException e) {
-                e.printStackTrace();
+                dos.writeObject(what);
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-
 
         }
     }
 
-    int kuk;
-    public void posliPico(){
-        sendMessage("client posila kuk cislo pico " + kuk);
-        kuk++;
+    public class InputListener extends Thread {
+
+        private ObjectInputStream ois;
+
+        public InputListener() {
+            try {
+                this.ois = new ObjectInputStream(socket.getInputStream());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        @Override
+        public void run() {
+            while(true) {
+                try {
+                    String msg = (String)ois.readObject();
+                    System.out.println("Message: " + msg);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
 
     }
 

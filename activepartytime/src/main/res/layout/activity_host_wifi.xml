@@ -33,18 +33,9 @@
         android:text="Start Server"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/textIPaddress"
-        android:layout_centerHorizontal="true"
-        android:onClick="startHost"
-        />
+        android:layout_centerHorizontal="true"/>
+       <!-- android:onClick="startHost"
+        />-->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="POSLI PICO"
-        android:id="@+id/buttonPICOposli"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/buttonJoin"
-        android:layout_alignEnd="@+id/buttonJoin"
-        />
 
 </RelativeLayout>

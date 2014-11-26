@@ -21,6 +21,7 @@ import android.os.Build;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.activepartytime.R;
 import com.app.activepartytime.core.network.wifi.JoinTask;
@@ -61,7 +62,7 @@ public class JoinWiFiActivity extends Activity {
 
             IPaddress.setText(ipAddress);
         } else {
-            IPaddress.setText("Nemas zaplou WiFi PICO");
+            IPaddress.setText("Turn on your WiFi");
         }
 
         /*if (savedInstanceState == null) {
@@ -72,9 +73,16 @@ public class JoinWiFiActivity extends Activity {
     }
 
     public void join(View view) {
-        joinTask = new JoinTask(IPaddress.getText().toString(), 5750,teamName.getText().toString(),(Button)findViewById(R.id.buttonPICOposliJoin));
-        joinTask.execute();
+        joinTask = new JoinTask(IPaddress.getText().toString(), 5750);
+        if (joinTask.run()) {
+            Toast toast = Toast.makeText(this, "Connected", Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            Toast toast = Toast.makeText(this, "Connecting error!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

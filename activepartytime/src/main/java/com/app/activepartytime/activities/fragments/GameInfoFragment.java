@@ -44,6 +44,7 @@ public class GameInfoFragment extends Fragment {
     private TaskDB currentTask;
     private TaskDB[] finalTasks;
     private boolean finalState;
+    private boolean isForAll;
 
     private int side;
 
@@ -90,12 +91,13 @@ public class GameInfoFragment extends Fragment {
         cross = (ImageButton) view1.findViewById(R.id.crossButton);
 
         finalState = false;
+        isForAll = false;
 
 
         taskLayoutGenerate = (RelativeLayout) view1.findViewById(R.id.taskLayoutGenerate);
         taskLayoutHidenTask = new RelativeLayout(getActivity());
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,ViewGroup.LayoutParams.FILL_PARENT);
-        taskLayoutHidenTask.setBackgroundColor(Color.parseColor("#dd0000"));
+        taskLayoutHidenTask.setBackgroundColor(Color.parseColor("#006400"));
         taskLayoutHidenTask.setLayoutParams(layoutParams);
         taskLayoutHidenTask.setId("taskLayoutHidenTask".hashCode());
         TextView showTask = new TextView(getActivity());
@@ -267,7 +269,11 @@ public class GameInfoFragment extends Fragment {
 
 
     private void success() {
-        game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
+        if (isForAll){
+            winDialog();
+        }else{
+            game.moveTeam(game.getCurrentTeam(),currentTask.getPoints());
+
 
         if (finalState){
             showWinner(game.getCurrentTeam().getName());
@@ -275,8 +281,10 @@ public class GameInfoFragment extends Fragment {
         }else{
             game.nextTeam();
         }
-        activity.updatePlaygroundFragment();
-        createNewView();
+
+            activity.updatePlaygroundFragment();
+            createNewView();
+        }
 
     }
 
@@ -313,6 +321,7 @@ public class GameInfoFragment extends Fragment {
 
     private void drawTask(){
         RelativeLayout.LayoutParams layoutParams;
+        isForAll = false;
         if(game.getCurrentTeam().getPlaygroundPosition() == game.getPlayground().getPlaygroundLength()-1){//final state
 
             finalState = true;
@@ -324,7 +333,7 @@ public class GameInfoFragment extends Fragment {
 
             taskFinalHelpText.setTextSize(18);
             taskFinalHelpText.setId("taskFinalHelpText".hashCode());
-            taskFinalHelpText.setText("Other teams will choose you task.");
+            taskFinalHelpText.setText("Other teams will choose your task.");
             taskFinalHelpText.setTypeface(null, Typeface.BOLD);
             taskFinalHelpText.setLayoutParams(layoutParams);
 
@@ -371,6 +380,7 @@ public class GameInfoFragment extends Fragment {
             finalState = false;
 
             if (currentTask.getPoints() == 6){//FOR ALL players
+                isForAll = true;
                 TextView taskForAllText = new TextView(getActivity());
                 layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                 layoutParams.addRule(RelativeLayout.ALIGN_TOP, "taskLayout".hashCode());
@@ -465,5 +475,28 @@ public class GameInfoFragment extends Fragment {
         builder.create();
         builder.show();
 
+    }
+
+    private void winDialog() {
+        final String[] items = new String[game.getTeams().length];
+        for (int i=0; i < items.length;i++){
+            items[i] = game.getTeams()[i].getName();
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+        builder.setTitle("Who won this task?");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Toast.makeText(StartPageActivity.this,items[i],Toast.LENGTH_SHORT).show();
+                game.moveTeam(game.getTeams()[i],currentTask.getPoints());
+                activity.updatePlaygroundFragment();
+                game.nextTeam();
+                createNewView();
+            }
+        });
+        builder.setNegativeButton("Cancel",null);
+        builder.show();
     }
 }

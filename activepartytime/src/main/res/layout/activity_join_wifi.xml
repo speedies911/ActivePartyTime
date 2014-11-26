@@ -35,9 +35,9 @@
         android:text="Join Server"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/joinTeamNameName"
-        android:layout_centerHorizontal="true"
-        android:onClick="join"
-        />
+        android:layout_centerHorizontal="true"/>
+        <!--android:onClick="join"
+        />-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,14 +61,6 @@
         android:layout_alignLeft="@+id/textIPaddress"
         android:layout_alignStart="@+id/textIPaddress" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="POSLI PICO"
-        android:id="@+id/buttonPICOposliJoin"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/buttonJoin"
-        android:layout_alignEnd="@+id/buttonJoin"
-        />
+
 
 </RelativeLayout>

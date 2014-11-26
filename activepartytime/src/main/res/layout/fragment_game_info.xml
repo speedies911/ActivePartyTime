@@ -82,7 +82,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:background="#dd0000"
+        android:background="#006400"
         android:layout_height="220dp"
         android:id="@+id/taskLayout"
         android:layout_below="@+id/activeTeam"
@@ -103,8 +103,8 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:background="#dd0000"
-        android:layout_height="200dp"
+        android:background="#006400"
+        android:layout_height="220dp"
         android:id="@+id/taskLayoutGenerate"
         android:layout_below="@+id/activeTeam"
         android:layout_alignParentLeft="true"
